@@ -1,1 +1,34 @@
-<p>list-item works!</p>
+<div class="row">
+    <div class="col-2">
+        <a>
+            <img src="{{ item.poster }}" alt="{{ item.title }} poster" class="img-fluid">
+
+        </a>
+    </div>
+    <div class="col-7">
+        <a>
+            <h3>{{ item.title }} {{ item.year }}</h3>
+        </a>
+        <div>
+            <h6>decription</h6>
+            <p *ngIf="item.desc">{{ item.desc }}</p>
+            <input type="text" *ngIf="editMode" [(ngModel)]="item.desc">
+        </div>
+    </div>
+    <div class="col-3">
+        <ul class="list-inline">
+            <li *ngIf="!item.watched" class="list-inline-item text-success">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+            </li>
+            <li *ngIf="!item.watched" class="list-inline-item text-danger">
+                <i class="fa fa-minus-circle" aria-hidden="true"></i>
+            </li>
+            <li class="list-inline-item text-warning">
+                <i class="fa fa-pencil-square" aria-hidden="true"></i>
+            </li>
+            <li class="list-inline-item text-danger">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </li>
+        </ul>
+    </div>
+</div>
