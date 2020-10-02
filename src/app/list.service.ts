@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { ListItem } from './list-item.model';
 
 @Injectable({
@@ -12,9 +13,15 @@ export class ListService {
       1972,
       "tt0068646",
     )
-  ]
+  ];
+  itemsChange=new Subject<ListItem[]>();
   constructor() { }
   getItems():ListItem[]{
     return this.items.slice();
+  }
+  addItem(poster:string,title:string,year:number,id:string,watched:boolean=false){
+    const item=new ListItem(poster,title,year,id);
+    this.items.push(item);
+    this.itemsChange.next(this.getItems());
   }
 }
