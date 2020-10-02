@@ -13,10 +13,16 @@ export class WatchListComponent implements OnInit {
   constructor(private listServie:ListService) { }
 
   ngOnInit(): void {
-    this.toWatch=this.listServie.getItems().filter((item:ListItem)=>{
+    this.setArrs(this.listServie.getItems());
+    this.listServie.itemsChange.subscribe((items:ListItem[])=>{
+      this.setArrs(items);
+    })
+  }
+  private setArrs(items:ListItem[]){
+    this.toWatch=items.filter((item:ListItem)=>{
       return !item.watched;
     })
-    this.wathced=this.listServie.getItems().filter((item:ListItem)=>{
+    this.wathced=items.filter((item:ListItem)=>{
       return item.watched;
     })
   }
