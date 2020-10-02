@@ -1,0 +1,23 @@
+.card{
+    background-color: var(--primary-color);
+    border: 4px var(--secondry-color) solid;
+    transition: all 1s linear;
+    height: 100%;
+}
+.card .row{
+    height: 100%;
+}
+.card:hover{
+    color: white;
+    border-color: white;
+}
+.card-img{
+    width: 100%;
+    height: 100%;
+}
+a{
+    color: var(--secondry-color);
+}
+a:hover{
+    text-decoration: none;
+}

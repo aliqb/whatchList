@@ -1,0 +1,16 @@
+<a [routerLink]="movie.id">
+    <div class="card">
+        <div class="row no-gutters">
+            <div class="col-sm-6">
+                <img class="card-img" [src]="movie.poster" alt="{{ movie.title }} poster">
+            </div>
+            <div class="col-sm-6">
+                <div class="card-body">
+                    <h4 class="card-title">{{ movie.title }} {{ movie.year }}</h4>
+                    <p class="car-text">{{ movie.type }}</p>
+                    <button class="btn btn-dark btn-sm">Add to watchlsit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>

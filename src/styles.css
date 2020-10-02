@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+    --primary-color:#333;
+    --secondry-color:#bbb;
+}
+body{
+    background-color:var(--primary-color);
+    color:var(--secondry-color);
+}
+a{
+    cursor: pointer;
+}
