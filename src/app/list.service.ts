@@ -40,4 +40,10 @@ export class ListService {
     this.items.splice(index,1);
     this.itemsChange.next(this.getItems());
   }
+  hasItem(id:string){
+    const index=this.items.findIndex((item:ListItem)=>{
+      return item.id===id;
+    });
+    return index!==-1;
+  }
 }
