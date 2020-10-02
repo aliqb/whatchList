@@ -25,4 +25,11 @@ export class ListService {
     this.items.push(item);
     this.itemsChange.next(this.getItems());
   }
+  changeItem(id:string,watched:boolean,description){
+    let item=this.items.find((item:ListItem)=>{
+      return item.id===id;
+    });
+    item.watched=watched;
+    this.itemsChange.next(this.getItems());
+  }
 }
