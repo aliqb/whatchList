@@ -21,5 +21,9 @@ export class ListItemComponent implements OnInit {
   deleteItem(){
     this.listService.deleteItem(this.item.id);
   }
+  addDesc(){
+    this.editMode=false;
+    this.listService.changeItem(this.item.id,this.item.watched,this.item.desc);
+  }
 
 }

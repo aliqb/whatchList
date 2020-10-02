@@ -5,12 +5,12 @@ export class ListItem{
     public id:string;
     public desc:string;
     public watched:boolean
-    constructor(poster:string,title:string,year:number,id:string,watched:boolean=false){
+    constructor(poster:string,title:string,year:number,id:string,watched:boolean=false,desc:string=''){
         this.poster=poster;
         this.title=title;
         this.year=year;
         this.id=id;
         this.watched=watched;
-
+        this.desc=desc;
     }
 }

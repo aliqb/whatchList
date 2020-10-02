@@ -13,6 +13,7 @@ export class ListService {
       1972,
       "tt0068646",
       true,
+    // 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur cumque, quam dolore inventore maxime eveniet modi exercitationem eligendi reiciendis ducimus corporis libero illum, magni voluptates adipisci asperiores aliquam et eos.'
     )
   ];
   itemsChange = new Subject<ListItem[]>();
