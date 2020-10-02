@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { DataStorageService } from '../data-storage.service';
 import { ListItem } from '../list-item.model';
 import { ListService } from '../list.service';
 
@@ -7,14 +9,16 @@ import { ListService } from '../list.service';
   templateUrl: './watch-list.component.html',
   styleUrls: ['./watch-list.component.css']
 })
-export class WatchListComponent implements OnInit {
+export class WatchListComponent implements OnInit,OnDestroy {
   toWatch:ListItem[]=[];
   wathced:ListItem[]=[];
-  constructor(private listServie:ListService) { }
+  changeSubs:Subscription;
+  storageSubs:Subscription;
+  constructor(private listServie:ListService,private storageService:DataStorageService) { }
 
   ngOnInit(): void {
     this.setArrs(this.listServie.getItems());
-    this.listServie.itemsChange.subscribe((items:ListItem[])=>{
+    this.changeSubs=this.listServie.itemsChange.subscribe((items:ListItem[])=>{
       this.setArrs(items);
     })
   }
@@ -24,6 +28,14 @@ export class WatchListComponent implements OnInit {
     })
     this.wathced=items.filter((item:ListItem)=>{
       return item.watched;
+    })
+  }
+  ngOnDestroy(){
+    if(this.changeSubs){
+      this.changeSubs.unsubscribe();
+    }
+    this.storageSubs=this.storageService.saveItems().subscribe(data=>{
+      this.storageSubs.unsubscribe();
     })
   }
 
