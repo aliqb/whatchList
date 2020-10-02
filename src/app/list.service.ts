@@ -14,7 +14,7 @@ export class ListService {
     )
   ]
   constructor() { }
-  getItems(){
+  getItems():ListItem[]{
     return this.items.slice();
   }
 }
