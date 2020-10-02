@@ -49,4 +49,8 @@ export class ListService {
     });
     return index!==-1;
   }
+  setItems(items:ListItem[]){
+    this.items=items;
+    this.itemsChange.next(this.getItems());
+  }
 }
