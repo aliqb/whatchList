@@ -2,6 +2,9 @@
     border: 4px var(--secondry-color) solid;
     border-radius: 5px;
 }
+.watched{
+    border-color: rgb(1, 36, 1);
+}
 img{
     width: 100%;
     /* height: 150px; */

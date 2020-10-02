@@ -12,6 +12,7 @@ export class ListService {
       "The GodFather",
       1972,
       "tt0068646",
+      true,
     )
   ];
   itemsChange=new Subject<ListItem[]>();

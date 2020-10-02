@@ -1,4 +1,4 @@
-<div class="row no-gutters align-items-center to-watch my-3">
+<div class="row no-gutters align-items-center to-watch my-3" [ngClass]="{watched:'item.watched'}">
     <div class="col-1">
         <a>
             <img src="{{ item.poster }}" alt="{{ item.title }} poster" class="img-fluid">
@@ -10,7 +10,7 @@
             <h3>{{ item.title }} {{ item.year }}</h3>
         </a>
         <div>
-            <h6>decription</h6>
+            <h6>decription:</h6>
             <p *ngIf="item.desc">{{ item.desc }}</p>
             <input type="text" *ngIf="editMode" [(ngModel)]="item.desc">
         </div>
