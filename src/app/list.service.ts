@@ -6,7 +6,7 @@ import { ListItem } from './list-item.model';
   providedIn: 'root'
 })
 export class ListService {
-  items:ListItem[]=[
+  items: ListItem[] = [
     new ListItem(
       "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
       "The GodFather",
@@ -15,21 +15,28 @@ export class ListService {
       true,
     )
   ];
-  itemsChange=new Subject<ListItem[]>();
+  itemsChange = new Subject<ListItem[]>();
   constructor() { }
-  getItems():ListItem[]{
+  getItems(): ListItem[] {
     return this.items.slice();
   }
-  addItem(poster:string,title:string,year:number,id:string,watched:boolean=false){
-    const item=new ListItem(poster,title,year,id);
+  addItem(poster: string, title: string, year: number, id: string, watched: boolean = false) {
+    const item = new ListItem(poster, title, year, id);
     this.items.push(item);
     this.itemsChange.next(this.getItems());
   }
-  changeItem(id:string,watched:boolean,description){
-    let item=this.items.find((item:ListItem)=>{
+  changeItem(id: string, watched: boolean, description) {
+    let item = this.items.find((item: ListItem) => {
+      return item.id === id;
+    });
+    item.watched = watched;
+    this.itemsChange.next(this.getItems());
+  }
+  deleteItem(id:string){
+    const index=this.items.findIndex((item:ListItem)=>{
       return item.id===id;
     });
-    item.watched=watched;
+    this.items.splice(index,1);
     this.itemsChange.next(this.getItems());
   }
 }

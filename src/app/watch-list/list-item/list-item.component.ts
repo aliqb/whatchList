@@ -18,5 +18,8 @@ export class ListItemComponent implements OnInit {
   changeWatched(){
     this.listService.changeItem(this.item.id,!this.item.watched,this.item.desc);
   }
+  deleteItem(){
+    this.listService.deleteItem(this.item.id);
+  }
 
 }
