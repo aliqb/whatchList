@@ -11,6 +11,7 @@ import { MovieComponent } from './movie/movie.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { RatingComponent } from './movie-detail/rating/rating.component';
 import { WatchListComponent } from './watch-list/watch-list.component';
+import { ListItemComponent } from './watch-list/list-item/list-item.component';
 
 
 
@@ -23,6 +24,7 @@ import { WatchListComponent } from './watch-list/watch-list.component';
     MovieDetailComponent,
     RatingComponent,
     WatchListComponent,
+    ListItemComponent,
   ],
   imports: [
     BrowserModule,
