@@ -32,7 +32,7 @@
                             
                         [queryParams]="{title:this.title,page:i}">{{ i }}</a></li>
                     <li class="page-item" *ngIf="pages>this.currentPage+5"><a class="page-link"
-                            [disables]="true">....</a></li>
+                            >....</a></li>
                     <li class="page-item" *ngIf="pages>this.currentPage+4"><a class="page-link" [routerLink]="['']"
                             [queryParams]="{title:this.title,page:pages}">{{ pages }}</a></li>
                     <li class="page-item" [ngClass]="{'disabled':currentPage===pages}">

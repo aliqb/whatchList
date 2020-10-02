@@ -1,4 +1,5 @@
-<a [routerLink]="movie.id">
+<a (click)=navigate($event)>
+    <!-- [routerLink]="movie.id" -->
     <div class="card">
         <div class="row no-gutters">
             <div class="col-sm-6">
@@ -8,7 +9,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ movie.title }} {{ movie.year }}</h4>
                     <p class="car-text">{{ movie.type }}</p>
-                    <button class="btn btn-dark btn-sm">Add to watchlsit</button>
+                    <button class="btn btn-dark btn-sm" (click)="addtoList()">Add to watchlsit</button>
                 </div>
             </div>
         </div>
