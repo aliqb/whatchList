@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ movie.title }} {{ movie.year }}</h4>
                     <p class="car-text">{{ movie.type }}</p>
-                    <button class="btn btn-dark btn-sm" (click)="addtoList()">{{ added ? 'remove from watchlist' : 'Add to watchlsit' }}</button>
+                    <button class="btn btn-dark btn-sm" (click)="toggletoList()">{{ added ? 'remove from watchlist' : 'Add to watchlsit' }}</button>
                 </div>
             </div>
         </div>

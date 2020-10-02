@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { GetMoviesService } from '../get-movies.service';
 import { Movie } from '../movie.model';
 import {switchMap} from 'rxjs/operators'
 import { ListService } from '../list.service';
+import { Subscription } from 'rxjs';
 interface RatingData{
   Source:string;
   Value:string;
@@ -40,9 +41,11 @@ interface MovieData {
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css']
 })
-export class MovieDetailComponent implements OnInit {
+export class MovieDetailComponent implements OnInit,OnDestroy {
   movie: Movie;
   message: string = "Loading...";
+  added:boolean;
+  addOrRemoveSubs: Subscription;
   constructor(private getService: GetMoviesService, private rout: ActivatedRoute,private listService:ListService) { }
 
   ngOnInit(): void {
@@ -76,13 +79,30 @@ export class MovieDetailComponent implements OnInit {
           type:movieData.Type     
         })
         this.message='';
+        this.getAdded();
       }else{
         this.message="There is no movie with this id"
       }
     })
   }
-  addToList(){
-    this.listService.addItem(this.movie.poster,this.movie.title,this.movie.year,this.movie.id);
+  private getAdded(){
+    this.added = this.listService.hasItem(this.movie.id);
+    this.addOrRemoveSubs = this.listService.addOrDelete.subscribe(() => {
+      this.added = this.listService.hasItem(this.movie.id);
+    })
+  }
+  toggletoList(){
+    if (this.added) {
+      this.listService.deleteItem(this.movie.id);
+    } else {
+
+      this.listService.addItem(this.movie.poster, this.movie.title, this.movie.year, this.movie.id);
+    }
+  }
+  ngOnDestroy(){
+    if(this.addOrRemoveSubs){
+      this.addOrRemoveSubs.unsubscribe();
+    }
   }
   // private getMovie(id: string) {
   //   this.getService.getMovieById(id).subscribe((movieData:MovieData)=>{

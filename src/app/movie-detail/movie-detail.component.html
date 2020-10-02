@@ -22,7 +22,7 @@
             <p class="text-warning"><i class="fa fa-trophy" aria-hidden="true"></i> {{ movie.awards }} </p>
         </div>
         <div class="col-md-1">
-            <button class="btn btn-dark btn-sm" (click)="addToList()">Add to watchlsit</button>
+            <button class="btn btn-dark btn-sm" (click)="toggletoList()">{{ added ? 'remove from watchlist' : 'Add to watchlsit' }}</button>
 
         </div>
     </div>

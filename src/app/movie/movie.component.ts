@@ -27,7 +27,7 @@ export class MovieComponent implements OnInit, OnDestroy {
       this.router.navigate([this.movie.id], { relativeTo: this.rout });
     }
   }
-  addtoList() {
+  toggletoList() {
     // console.log("e")
     if (this.added) {
       this.listService.deleteItem(this.movie.id);
