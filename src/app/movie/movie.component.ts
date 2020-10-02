@@ -29,10 +29,15 @@ export class MovieComponent implements OnInit, OnDestroy {
   }
   addtoList() {
     // console.log("e")
-    this.listService.addItem(this.movie.poster, this.movie.title, this.movie.year, this.movie.id);
+    if (this.added) {
+      this.listService.deleteItem(this.movie.id);
+    } else {
+
+      this.listService.addItem(this.movie.poster, this.movie.title, this.movie.year, this.movie.id);
+    }
   }
-  ngOnDestroy(){
-    if(this.addOrRemoveSubs){
+  ngOnDestroy() {
+    if (this.addOrRemoveSubs) {
       this.addOrRemoveSubs.unsubscribe();
     }
   }
