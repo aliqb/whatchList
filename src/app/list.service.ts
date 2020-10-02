@@ -17,6 +17,7 @@ export class ListService {
     )
   ];
   itemsChange = new Subject<ListItem[]>();
+  addOrDelete=new Subject<null>();
   constructor() { }
   getItems(): ListItem[] {
     return this.items.slice();
@@ -25,6 +26,7 @@ export class ListService {
     const item = new ListItem(poster, title, year, id);
     this.items.push(item);
     this.itemsChange.next(this.getItems());
+    this.addOrDelete.next();
   }
   changeItem(id: string, watched: boolean, description) {
     let item = this.items.find((item: ListItem) => {
@@ -39,6 +41,7 @@ export class ListService {
     });
     this.items.splice(index,1);
     this.itemsChange.next(this.getItems());
+    this.addOrDelete.next();
   }
   hasItem(id:string){
     const index=this.items.findIndex((item:ListItem)=>{
