@@ -2,10 +2,9 @@
 <div *ngIf="!message" class="container mt-5 text-white">
     <div class="row">
         <div class="col-md-4">
-            <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-fluid">
+            <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-fluid poster">
             <div class="d-flex justify-content-between">
                 <app-rating *ngFor="let rating of movie.rating" [ratingData]="rating"></app-rating>
-
             </div>
         </div>
         <div class="col-md-7">

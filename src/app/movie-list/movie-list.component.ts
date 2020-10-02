@@ -41,7 +41,7 @@ export class MovieListComponent implements OnInit {
     this.router.navigate([''],{relativeTo:this.rout,queryParams:{title:this.title,page:1}})
   }
   private getMovies(){
-    this.getService.searchByTitle(this.title,this.currentPage).subscribe((data:SearchData)=>{
+    this.getService.searchByTitle(this.rout.snapshot.queryParams['title'],this.currentPage).subscribe((data:SearchData)=>{
       this.message="";
       if(data.Response==='True'){
         
