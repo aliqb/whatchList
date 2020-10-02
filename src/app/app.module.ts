@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { MovieComponent } from './movie/movie.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { RatingComponent } from './movie-detail/rating/rating.component';
+import { WatchListComponent } from './watch-list/watch-list.component';
+
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { RatingComponent } from './movie-detail/rating/rating.component';
     MovieListComponent,
     MovieComponent,
     MovieDetailComponent,
-    RatingComponent
+    RatingComponent,
+    WatchListComponent,
   ],
   imports: [
     BrowserModule,
