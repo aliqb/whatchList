@@ -2,7 +2,13 @@
     border: 4px var(--secondry-color) solid;
     border-radius: 5px;
 }
+.to-watch-detail{
+    border-bottom: 4px var(--secondry-color) solid;
+}
 .watched{
+    border-color: rgb(1, 36, 1);
+}
+.watched-detail{
     border-color: rgb(1, 36, 1);
 }
 .img-box{
@@ -21,6 +27,10 @@ img{
 .desc{
     width: 100%;
     overflow-wrap: break-word;
+    height: 100%;
+    max-height: 72px;
+    overflow: auto;
+
 }
 /* ul{
     width: 100%;
