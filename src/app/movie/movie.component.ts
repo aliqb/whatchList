@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ListService } from '../list.service';
 import { Movie } from '../movie.model';
 
 @Component({
@@ -9,17 +10,18 @@ import { Movie } from '../movie.model';
 })
 export class MovieComponent implements OnInit {
   @Input() movie:Movie;
-  constructor(private router:Router,private rout:ActivatedRoute) { }
+  constructor(private router:Router,private rout:ActivatedRoute,private listService:ListService) { }
 
   ngOnInit(): void {
   }
   navigate(event){
     if(!((<HTMLElement>event.target).tagName==='BUTTON')){
-      console.log('n');
+      // console.log('n');
       this.router.navigate([this.movie.id],{relativeTo:this.rout});
     }
   }
   addtoList(){
-    console.log("e")
+    // console.log("e")
+    this.listService.addItem(this.movie.poster,this.movie.title,this.movie.year,this.movie.id);
   }
 }
