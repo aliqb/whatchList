@@ -3,6 +3,7 @@ import { ActivatedRoute} from '@angular/router';
 import { GetMoviesService } from '../get-movies.service';
 import { Movie } from '../movie.model';
 import {switchMap} from 'rxjs/operators'
+import { ListService } from '../list.service';
 interface RatingData{
   Source:string;
   Value:string;
@@ -42,7 +43,7 @@ interface MovieData {
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
   message: string = "Loading...";
-  constructor(private getService: GetMoviesService, private rout: ActivatedRoute) { }
+  constructor(private getService: GetMoviesService, private rout: ActivatedRoute,private listService:ListService) { }
 
   ngOnInit(): void {
     // this.rout.params.subscribe(data => {
@@ -79,6 +80,9 @@ export class MovieDetailComponent implements OnInit {
         this.message="There is no movie with this id"
       }
     })
+  }
+  addToList(){
+    this.listService.addItem(this.movie.poster,this.movie.title,this.movie.year,this.movie.id);
   }
   // private getMovie(id: string) {
   //   this.getService.getMovieById(id).subscribe((movieData:MovieData)=>{
