@@ -15,7 +15,7 @@
                         <label for="pass-rep">repeat password:</label>
                         <input id="pass-rep" type="password" class="form-control" formControlName="passwordRepeat">
                     </div>
-                    <button class="btn btn-dark mr-2" type="submit">{{ signUpMode ? "Sign Up" : "Log In"}}</button>
+                    <button class="btn btn-dark mr-2" type="submit" [disabled]="form.invalid">{{ signUpMode ? "Sign Up" : "Log In"}}</button>
                     <button class="btn btn-dark" type="button" (click)="changeMode()">switch to {{signUpMode ? "Log In" : "Sign Up"}}</button>
                 </form>
             </div>
