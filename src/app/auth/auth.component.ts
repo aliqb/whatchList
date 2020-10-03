@@ -45,7 +45,7 @@ export class AuthComponent implements OnInit {
   }
   private repPasswordValidator(control:FormControl):{[s:string]:boolean}{
     // console.log('v',control.value,this.password)
-    console.log(this.signUpMode)
+    // console.log(this.signUpMode)
     // if(!this.signUpMode){
     //   return null
     // }
