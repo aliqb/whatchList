@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../User.model';
+
 export interface responseData{
   idToken:string,
   email:string,
@@ -49,7 +50,10 @@ export class AuthService {
 
   logout(){
     this.user.next(null);
-    this.router.navigate(['/auth']);
+    // console.log('c',this.router.url);
+    if(this.router.url==='/watchList'){
+      this.router.navigate(['/auth']);
+    }
     localStorage.removeItem('userData');
     if(this.logOutTimer){
       clearTimeout(this.logOutTimer);
