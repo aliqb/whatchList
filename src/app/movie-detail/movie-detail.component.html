@@ -7,7 +7,7 @@
                 <app-rating *ngFor="let rating of movie.rating" [ratingData]="rating"></app-rating>
             </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-6">
             <h1>{{ movie.title }}</h1>
             <h2>{{ movie.year }}</h2>
             <p class="text-muted">{{ movie.type }}</p>
@@ -21,9 +21,9 @@
             <p>country: {{movie.country}} language:{{ movie.language }}</p>
             <p class="text-warning"><i class="fa fa-trophy" aria-hidden="true"></i> {{ movie.awards }} </p>
         </div>
-        <div class="col-md-1">
-            <button class="btn btn-dark btn-sm" (click)="toggletoList()">{{ added ? 'remove from watchlist' : 'Add to watchlsit' }}</button>
-
+        <div class="col-md-2">
+            <button class="btn btn-dark btn-sm" (click)="toggletoList()" [disabled]="!isAuth">{{ added && isAuth ? 'remove from watchlist' : 'Add to watchlsit' }}</button>
+            <p class="text-danger" *ngIf="!isAuth"><small>you have to Log In  to make watchList</small></p>
         </div>
     </div>
     <div class="row mt-3">
