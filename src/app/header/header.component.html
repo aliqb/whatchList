@@ -14,7 +14,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a *ngIf="!isAuth" routerLink="auth"  class="nav-link">Log In/sign Up</a>
-                <a *ngIf="isAuth"  class="nav-link text-danger">Log Out</a>
+                <a *ngIf="isAuth" (click)="onLogOut()" class="nav-link text-danger">Log Out</a>
             </li>
         </ul>
     </div>

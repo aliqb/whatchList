@@ -76,7 +76,7 @@ export class AuthService {
 
   }
   
-  autoLogOut(expireDuration:number){
+  private autoLogOut(expireDuration:number){
     this.logOutTimer=setTimeout(()=>{
       this.user.next(null);
       this.logout();
