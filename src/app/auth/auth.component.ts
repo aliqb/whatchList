@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { AuthService, responseData } from './auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit,OnDestroy {
   signUpMode:boolean=false;
   form:FormGroup;
   errMsg:string="";
@@ -74,5 +74,9 @@ export class AuthComponent implements OnInit {
     }
     return null;
   }
-
+  ngOnDestroy(){
+    if(this.authSubs){
+      this.authSubs.unsubscribe();
+    }
+  }
 }
