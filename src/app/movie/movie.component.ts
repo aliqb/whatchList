@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { ListService } from '../list.service';
 import { Movie } from '../movie.model';
 
@@ -12,11 +13,16 @@ import { Movie } from '../movie.model';
 export class MovieComponent implements OnInit, OnDestroy {
   @Input() movie: Movie;
   added: boolean;
+  isAuth:boolean=false;
   addOrRemoveSubs: Subscription;
-  constructor(private router: Router, private rout: ActivatedRoute, private listService: ListService) { }
+  authSub:Subscription;
+  constructor(private router: Router, private rout: ActivatedRoute, private listService: ListService,private authService:AuthService) { }
 
   ngOnInit(): void {
     this.added = this.listService.hasItem(this.movie.id);
+    this.authSub=this.authService.user.subscribe(user=>{
+      this.isAuth=!!user;
+    })
     this.addOrRemoveSubs = this.listService.addOrDelete.subscribe(() => {
       this.added = this.listService.hasItem(this.movie.id);
     })
@@ -39,6 +45,9 @@ export class MovieComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.addOrRemoveSubs) {
       this.addOrRemoveSubs.unsubscribe();
+    }
+    if(this.authSub){
+      this.authSub.unsubscribe();
     }
   }
 }
