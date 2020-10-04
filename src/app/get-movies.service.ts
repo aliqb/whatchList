@@ -10,14 +10,14 @@ export class GetMoviesService {
 
   searchByTitle(title: string, page: number = 1) {
     let searchParams = new HttpParams();
-    searchParams = searchParams.append('apiKey', environment.apikey);
+    searchParams = searchParams.append('apiKey', environment.movieApikey);
     searchParams = searchParams.append('s', title);
     searchParams = searchParams.append('page', String(page));
     return this.http.get("http://www.omdbapi.com/", { params: searchParams })
   }
   getMovieById(id: string) {
     let searchParams = new HttpParams();
-    searchParams = searchParams.append('apiKey', environment.apikey);
+    searchParams = searchParams.append('apiKey', environment.movieApikey);
     searchParams = searchParams.append('i', id);
     searchParams = searchParams.append('plot','full');
     return this.http.get("http://www.omdbapi.com/", { params: searchParams })

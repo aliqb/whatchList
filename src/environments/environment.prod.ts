@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apikey:'f04974fd&s'
+  movieApikey:'f04974fd&s'
 };
