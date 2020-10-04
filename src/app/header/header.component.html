@@ -8,12 +8,13 @@
                 <a routerLink="" class="nav-link">Movies</a>
             </li>
             <li class="nav-item">
-                <a routerLink="watchList" class="nav-link">Watch List</a>
+                <a *ngIf="isAuth" routerLink="watchList" class="nav-link">Watch List</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a routerLink="auth"  class="nav-link">Log In/sign Up</a>
+                <a *ngIf="!isAuth" routerLink="auth"  class="nav-link">Log In/sign Up</a>
+                <a *ngIf="isAuth"  class="nav-link text-danger">Log Out</a>
             </li>
         </ul>
     </div>
