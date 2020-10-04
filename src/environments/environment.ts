@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  movieApikey:'f04974fd'
+  movieApikey:'f04974fd',
+  firebaseApiKey:"AIzaSyCsZTv8pZEgh7pVIEtBWZ_P_IKbQIpV4lk"
+
 };
 
 /*
