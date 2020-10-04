@@ -3,6 +3,7 @@
         <div class="col-lg-6">
             <div class="form-container p-5">
                 <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <p class="text-danger" *ngIf="errMsg">{{ errMsg }}</p>
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input id="email" type="text" class="form-control" formControlName="email">

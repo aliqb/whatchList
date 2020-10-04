@@ -17,7 +17,7 @@ export interface responseData{
   providedIn: 'root'
 })
 
-export class AuthServiceService {
+export class AuthService {
   user=new BehaviorSubject<User>(null);
   private logOutTimer;
 
