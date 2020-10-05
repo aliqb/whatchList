@@ -1,11 +1,11 @@
 export class ListItem{
     public poster:string;
     public title:string;
-    public year:number;
+    public year:string;
     public id:string;
     public desc:string;
     public watched:boolean
-    constructor(poster:string,title:string,year:number,id:string,watched:boolean=false,desc:string=''){
+    constructor(poster:string,title:string,year:string,id:string,watched:boolean=false,desc:string=''){
         this.poster=poster;
         this.title=title;
         this.year=year;

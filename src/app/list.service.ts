@@ -10,7 +10,7 @@ export class ListService {
     new ListItem(
       "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
       "The GodFather",
-      1972,
+      '1972',
       "tt0068646",
       true,
     // 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur cumque, quam dolore inventore maxime eveniet modi exercitationem eligendi reiciendis ducimus corporis libero illum, magni voluptates adipisci asperiores aliquam et eos.'
@@ -22,7 +22,7 @@ export class ListService {
   getItems(): ListItem[] {
     return this.items.slice();
   }
-  addItem(poster: string, title: string, year: number, id: string, watched: boolean = false) {
+  addItem(poster: string, title: string, year: string, id: string, watched: boolean = false) {
     const item = new ListItem(poster, title, year, id);
     this.items.push(item);
     this.itemsChange.next(this.getItems());
