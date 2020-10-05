@@ -1,9 +1,19 @@
 <div class="container">
     <div class="row justify-content-center my-4">
         <div class="col-md-8">
-            <form action="#">
-                <input type="text" class="form-control" id="title" name="title" placeholder="type movie or series title"
+            <form action="#" class="form-row">
+                <div class="col-10">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="type movie or series title"
                     [(ngModel)]="title" (input)="search()">
+                </div>
+                <div class="col-2">
+                    <select name="tyoe" id="type" class="form-control">
+                        <option selected value="all">all</option>
+                        <option value="movie">movie</option>
+                        <option value="series">eries</option>
+                        <option value="game">game</option>
+                    </select>
+                </div>
             </form>
         </div>
     </div>
