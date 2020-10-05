@@ -24,7 +24,7 @@ export class Movie{
 
     // ){}
     public title:string;
-    public year:number;
+    public year:string;
     public rated:string;
     public runTime:string;
     public genre:string;
@@ -42,7 +42,7 @@ export class Movie{
     constructor({
         
          title='',
-         year=0,
+         year='',
          rated='',
          runTime='',
          genre='',

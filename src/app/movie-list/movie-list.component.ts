@@ -68,7 +68,7 @@ export class MovieListComponent implements OnInit {
       if (data.Response === 'True') {
 
         this.movies = data.Search.map(md => {
-          return new Movie({ title: md.Title, year: Number(md.Year), id: md.imdbID, type: md.Type, poster: md.Poster })
+          return new Movie({ title: md.Title, year: md.Year, id: md.imdbID, type: md.Type, poster: md.Poster })
         });
         this.pages = Math.ceil(Number(data.totalResults) / 10);
       }
