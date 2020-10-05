@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class GetMoviesService {
   constructor(private http: HttpClient) { }
 
-  searchByTitle(title: string, page: number = 1,type: string = "") {
+  searchByTitle(title: string, page: number = 1,type: string = "",year: string = "") {
     console.log('s');
     let searchParams = new HttpParams();
     searchParams = searchParams.append('apiKey', environment.movieApikey);
@@ -17,6 +17,10 @@ export class GetMoviesService {
     if(type){
       // console.log(type);
       searchParams = searchParams.append('type',type);
+    }
+    if(year){
+      // console.log(type);
+      searchParams = searchParams.append('y',year);
     }
     return this.http.get("http://www.omdbapi.com/", { params: searchParams })
   }
