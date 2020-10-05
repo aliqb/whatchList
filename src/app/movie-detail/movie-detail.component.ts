@@ -64,7 +64,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
       if (movieData.Response === 'True') {
         this.movie = new Movie({
           title: movieData.Title,
-          year: Number(movieData.Year),
+          year: movieData.Year,
           rated: movieData.Rated,
           runTime: movieData.Runtime,
           genre: movieData.Genre,
