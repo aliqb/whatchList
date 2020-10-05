@@ -106,10 +106,10 @@ export class MovieListComponent implements OnInit {
     return arr;
   }
   nextPage() {
-    this.router.navigate([''], { relativeTo: this.rout, queryParams: { title: this.title, page: this.currentPage + 1 } });
+    this.router.navigate([''], { relativeTo: this.rout,queryParamsHandling:"merge", queryParams: { page: this.currentPage + 1 } });
   }
   prevPage() {
-    this.router.navigate([''], { relativeTo: this.rout, queryParams: { title: this.title, page: this.currentPage - 1 } });
+    this.router.navigate([''], { relativeTo: this.rout,queryParamsHandling:'merge', queryParams: { page: this.currentPage - 1 } });
   }
 
 }

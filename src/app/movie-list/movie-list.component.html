@@ -39,8 +39,8 @@
                         </a>
                     </li>
                     <li class="page-item" *ngFor="let i of paginationMaker()" routerLinkActive="active"><a class="page-link" [routerLink]="['']"
-                            
-                        [queryParams]="{title:this.title,page:i}">{{ i }}</a></li>
+                        [queryParamsHandling]="'merge'"
+                        [queryParams]="{page:i}">{{ i }}</a></li>
                     <li class="page-item" *ngIf="pages>this.currentPage+5"><a class="page-link"
                             >....</a></li>
                     <li class="page-item" *ngIf="pages>this.currentPage+4"><a class="page-link" [routerLink]="['']"
