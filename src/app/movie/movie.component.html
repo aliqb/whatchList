@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="card-body">
-                    <h4 class="card-title">{{ movie.title }} {{ movie.year }}</h4>
+                    <h4 class="card-title">{{ movie.title }} {{ movie.year ? movie.year : '' }}</h4>
                     <p class="car-text">{{ movie.type }}</p>
                     <p class="text-danger" *ngIf="!isAuth"><small>you have to Log In  to make watchList</small></p>
                     <button class="btn btn-dark btn-sm" (click)="toggletoList()" [disabled]="!isAuth">{{ added && isAuth ? 'remove from watchlist' : 'Add to watchlsit' }}</button>

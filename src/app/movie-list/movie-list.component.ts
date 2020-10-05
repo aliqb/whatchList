@@ -36,7 +36,7 @@ export class MovieListComponent implements OnInit {
       // console.log(this.rout.snapshot.queryParams['title']);
       this.currentPage = +this.rout.snapshot.queryParams['page'];
       this.type=this.rout.snapshot.queryParams['type'];
-      console.log('o',this.type);
+      // console.log('o',this.type);
       if(!this.type){
         this.type='all';
       }
