@@ -3,8 +3,8 @@
         <div class="col-md-8">
             <form action="#" class="form-row">
                 <div class="col-8">
-                    <input type="text" class="form-control" id="title" name="title" placeholder="type movie or series title"
-                    [(ngModel)]="title" (input)="search()">
+                    <input type="text" class="form-control" id="title" name="title"
+                        placeholder="type movie or series title" [(ngModel)]="title" (input)="search()">
                 </div>
                 <div class="col-2">
                     <select name="tyoe" id="type" class="form-control" [(ngModel)]="type" (change)="search()">
@@ -15,7 +15,9 @@
                     </select>
                 </div>
                 <div class="col-2">
-                    <input type="number" class="form-control" id="year" name="year" placeholder="all years" min="1888">
+                    <input type="number" class="form-control" id="year" name="year" placeholder="all years" min="1888"
+                        [(ngModel)]="year"
+                        (input)="search()">
                 </div>
             </form>
         </div>
@@ -41,16 +43,14 @@
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li class="page-item" *ngFor="let i of paginationMaker()" routerLinkActive="active"><a class="page-link" [routerLink]="['']"
-                        [queryParamsHandling]="'merge'"
-                        [queryParams]="{page:i}">{{ i }}</a></li>
-                    <li class="page-item" *ngIf="pages>this.currentPage+5"><a class="page-link"
-                            >....</a></li>
+                    <li class="page-item" *ngFor="let i of paginationMaker()" routerLinkActive="active"><a
+                            class="page-link" [routerLink]="['']" [queryParamsHandling]="'merge'"
+                            [queryParams]="{page:i}">{{ i }}</a></li>
+                    <li class="page-item" *ngIf="pages>this.currentPage+5"><a class="page-link">....</a></li>
                     <li class="page-item" *ngIf="pages>this.currentPage+4"><a class="page-link" [routerLink]="['']"
                             [queryParams]="{title:this.title,page:pages}">{{ pages }}</a></li>
                     <li class="page-item" [ngClass]="{'disabled':currentPage===pages}">
-                        <a class="page-link"  aria-label="Next" (click)="nextPage()"
-                            >
+                        <a class="page-link" aria-label="Next" (click)="nextPage()">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

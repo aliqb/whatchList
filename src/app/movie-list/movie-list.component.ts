@@ -24,6 +24,7 @@ export class MovieListComponent implements OnInit {
   message: string = "type to search movie or series";
   title: string = '';
   type: string = 'all';
+  year: string;
   movies: Movie[] = [];
   pages: number;
   currentPage: number = 1;
@@ -41,12 +42,17 @@ export class MovieListComponent implements OnInit {
       if(!this.type){
         this.type='all';
       }
+      this.year=this.rout.snapshot.queryParams['year'];
+      if(!this.year){
+        this.year='';
+      }
       this.getMovies();
 
     })
   }
   search() {
     // console.log(this.type);
+    // console.log(this.year)
     // console.log(this.title);
     if (this.title) {
       console.log('in')
@@ -57,12 +63,22 @@ export class MovieListComponent implements OnInit {
         console.log('t');
         params = { title: this.title, page: 1, type: this.type };
       }
+      if (this.year) {
+        params['year']=this.year;
+      }     
       this.router.navigate([''], { relativeTo: this.rout, queryParams: params })
     }
   }
   private getMovies() {
+    const type=this.type === 'all' ? "" : this.type;
+    console.log('gy',this.year);
+    const year=this.year ? this.year : '' ;
+    console.log('gy',year);
     this.getService.searchByTitle(
-      this.rout.snapshot.queryParams['title'], this.currentPage, this.type === 'all' ? "" : this.type
+      this.rout.snapshot.queryParams['title'], 
+      this.currentPage,
+      type,
+      year
 )
       .subscribe((data: SearchData) => {
       this.message = "";
