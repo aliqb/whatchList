@@ -31,11 +31,12 @@ export class MovieListComponent implements OnInit {
   constructor(private getService: GetMoviesService, private router: Router, private rout: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.title);
+    console.log('onin');
+    console.log('t',this.title);
     this.rout.queryParams.subscribe(query => {
       // this.title=this.rout.snapshot.queryParams['title'];
       if(this.rout.snapshot.queryParams['title']){
-        this.title=this.rout.snapshot.queryParams['title'];
+        // this.title=this.rout.snapshot.queryParams['title'];
       }
       this.currentPage = +this.rout.snapshot.queryParams['page'];
       this.type=this.rout.snapshot.queryParams['type'];
@@ -46,7 +47,10 @@ export class MovieListComponent implements OnInit {
       if(!this.year){
         this.year='';
       }
-      this.getMovies();
+      if(this.title){
+        this.getMovies();
+
+      }
 
     })
   }
@@ -54,32 +58,31 @@ export class MovieListComponent implements OnInit {
     // console.log(this.type);
     // console.log(this.year)
     // console.log(this.title);
+    let params: {};
     if (this.title) {
-      console.log('in')
-      let params: {};
+      // console.log('in')
       if (this.type === 'all') {
         params = { title: this.title, page: 1 }
       } else {
-        console.log('t');
+        // console.log('t');
         params = { title: this.title, page: 1, type: this.type };
       }
       if (this.year) {
         params['year']=this.year;
       }     
-      this.router.navigate([''], { relativeTo: this.rout, queryParams: params })
     }
+    this.router.navigate([''], { relativeTo: this.rout, queryParams: params })
   }
   private getMovies() {
     const type=this.type === 'all' ? "" : this.type;
-    console.log('gy',this.year);
+    // console.log('gy',this.year);
     const year=this.year ? this.year : '' ;
-    console.log('gy',year);
+    // console.log('gy',year);
     this.getService.searchByTitle(
       this.rout.snapshot.queryParams['title'], 
       this.currentPage,
       type,
-      year
-)
+      year)
       .subscribe((data: SearchData) => {
       this.message = "";
       if (data.Response === 'True') {
