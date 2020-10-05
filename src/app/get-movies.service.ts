@@ -9,11 +9,13 @@ export class GetMoviesService {
   constructor(private http: HttpClient) { }
 
   searchByTitle(title: string, page: number = 1,type: string = "") {
+    console.log('s');
     let searchParams = new HttpParams();
     searchParams = searchParams.append('apiKey', environment.movieApikey);
     searchParams = searchParams.append('s', title);
     searchParams = searchParams.append('page', String(page));
     if(type){
+      // console.log(type);
       searchParams = searchParams.append('type',type);
     }
     return this.http.get("http://www.omdbapi.com/", { params: searchParams })
