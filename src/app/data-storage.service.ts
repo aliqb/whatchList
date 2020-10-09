@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ListService } from './list.service';
 
@@ -6,5 +7,11 @@ import { ListService } from './list.service';
 })
 export class DataStorageService {
 
-  constructor(private listServide:ListService) { }
+  constructor(private listService:ListService,private http:HttpClient) { }
+  saveItems(){
+    this.http.post("https://watchlist-a8e7c.firebaseio.com/list.json",this.listService.getItems())
+    .subscribe(data=>{
+      console.log(data);
+    })
+  }
 }

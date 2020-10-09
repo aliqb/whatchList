@@ -13,15 +13,16 @@ export class ListService {
       '1972',
       "tt0068646",
       true,
-    // 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur cumque, quam dolore inventore maxime eveniet modi exercitationem eligendi reiciendis ducimus corporis libero illum, magni voluptates adipisci asperiores aliquam et eos.'
+      // 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur cumque, quam dolore inventore maxime eveniet modi exercitationem eligendi reiciendis ducimus corporis libero illum, magni voluptates adipisci asperiores aliquam et eos.'
     )
   ];
   itemsChange = new Subject<ListItem[]>();
-  addOrDelete=new Subject<null>();
+  addOrDelete = new Subject<null>();
   constructor() { }
   getItems(): ListItem[] {
     return this.items.slice();
   }
+
   addItem(poster: string, title: string, year: string, id: string, watched: boolean = false) {
     const item = new ListItem(poster, title, year, id);
     this.items.push(item);
@@ -35,22 +36,22 @@ export class ListService {
     item.watched = watched;
     this.itemsChange.next(this.getItems());
   }
-  deleteItem(id:string){
-    const index=this.items.findIndex((item:ListItem)=>{
-      return item.id===id;
+  deleteItem(id: string) {
+    const index = this.items.findIndex((item: ListItem) => {
+      return item.id === id;
     });
-    this.items.splice(index,1);
+    this.items.splice(index, 1);
     this.itemsChange.next(this.getItems());
     this.addOrDelete.next();
   }
-  hasItem(id:string){
-    const index=this.items.findIndex((item:ListItem)=>{
-      return item.id===id;
+  hasItem(id: string) {
+    const index = this.items.findIndex((item: ListItem) => {
+      return item.id === id;
     });
-    return index!==-1;
+    return index !== -1;
   }
-  setItems(items:ListItem[]){
-    this.items=items;
+  setItems(items: ListItem[]) {
+    this.items = items;
     this.itemsChange.next(this.getItems());
   }
 }
