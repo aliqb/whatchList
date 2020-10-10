@@ -11,24 +11,28 @@ import { User } from './User.model';
 export class DataStorageService {
 
   constructor(private listService: ListService, private http: HttpClient, private authService: AuthService) { }
-  saveItems() {
-    // console.log(this.listService.getItems())
-    // this.http.put("https://watchlist-a8e7c.firebaseio.com/list.json",this.listService.getItems())
-    // .subscribe(data=>{
-    //   console.log(data);
-    // })
-    this.authService.user
-    .pipe(
-      switchMap((user: User) => {
-        if (user) {
-          return this.http.put("https://watchlist-a8e7c.firebaseio.com/list.json",
-           this.listService.getItems(),
-           {params:new HttpParams().set('auth',user.token)})
-        }
+  fetchItems(user:User) {
+    if(user){
+      this.http.get("https://watchlist-a8e7c.firebaseio.com/list.json",
+      { params: new HttpParams().set('auth', user.token) })
+      .subscribe(data=>{
+        console.log(data);
       })
-    )
-    .subscribe(respone=>{
-      console.log(respone)
-    })
+    }
+  }
+  saveItems() {
+    this.authService.user
+      .pipe(
+        switchMap((user: User) => {
+          if (user) {
+            return this.http.put("https://watchlist-a8e7c.firebaseio.com/list.json",
+              this.listService.getItems(),
+              { params: new HttpParams().set('auth', user.token) })
+          }
+        })
+      )
+      .subscribe(respone => {
+        console.log(respone)
+      })
   }
 }
