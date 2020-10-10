@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from './auth/auth.service';
+import { ListItem } from './list-item.model';
 import { ListService } from './list.service';
 import { User } from './User.model';
 
@@ -15,8 +16,8 @@ export class DataStorageService {
     if(user){
       this.http.get("https://watchlist-a8e7c.firebaseio.com/list.json",
       { params: new HttpParams().set('auth', user.token) })
-      .subscribe(data=>{
-        console.log(data);
+      .subscribe((items:ListItem[])=>{
+        this.listService.setItems(items);
       })
     }
   }
