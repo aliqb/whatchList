@@ -13,15 +13,15 @@ import { Movie } from '../movie.model';
 export class MovieComponent implements OnInit, OnDestroy {
   @Input() movie: Movie;
   added: boolean;
-  isAuth:boolean=false;
+  isAuth: boolean = false;
   addOrRemoveSubs: Subscription;
-  authSub:Subscription;
-  constructor(private router: Router, private rout: ActivatedRoute, private listService: ListService,private authService:AuthService) { }
+  authSub: Subscription;
+  constructor(private router: Router, private rout: ActivatedRoute, private listService: ListService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.added = this.listService.hasItem(this.movie.id);
-    this.authSub=this.authService.user.subscribe(user=>{
-      this.isAuth=!!user;
+    this.authSub = this.authService.user.subscribe(user => {
+      this.isAuth = !!user;
     })
     this.addOrRemoveSubs = this.listService.addOrDelete.subscribe(() => {
       this.added = this.listService.hasItem(this.movie.id);
@@ -29,12 +29,10 @@ export class MovieComponent implements OnInit, OnDestroy {
   }
   navigate(event) {
     if (!((<HTMLElement>event.target).tagName === 'BUTTON')) {
-      // console.log('n');
       this.router.navigate([this.movie.id], { relativeTo: this.rout });
     }
   }
   toggletoList() {
-    // console.log("e")
     if (this.added) {
       this.listService.deleteItem(this.movie.id);
     } else {
@@ -46,7 +44,7 @@ export class MovieComponent implements OnInit, OnDestroy {
     if (this.addOrRemoveSubs) {
       this.addOrRemoveSubs.unsubscribe();
     }
-    if(this.authSub){
+    if (this.authSub) {
       this.authSub.unsubscribe();
     }
   }
