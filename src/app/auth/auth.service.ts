@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -50,7 +50,6 @@ export class AuthService {
 
   logout(){
     this.user.next(null);
-    // console.log('c',this.router.url);
     if(this.router.url==='/watchList'){
       this.router.navigate(['/auth']);
     }
@@ -70,11 +69,9 @@ export class AuthService {
     } = JSON.parse(localStorage.getItem('userData'));
     if(userData){
       const user=new User(userData.email,userData.id,userData._token,new Date(userData._tokenExpirationDate));
-      // console.log(user.token)
       if(user.token){
         console.log('al',user);
         this.user.next(user);
-        // console.log(userData._tokenExpirationDate);
         const expireDuration=new Date(userData._tokenExpirationDate).getTime() -new Date().getTime() ;
         console.log(expireDuration);
         this.autoLogOut(expireDuration)
