@@ -13,7 +13,6 @@ export class AuthComponent implements OnInit,OnDestroy {
   signUpMode:boolean=false;
   form:FormGroup;
   errMsg:string="";
-  // fuck="fuck";
   password:string;
   authSubs:Subscription;
   constructor(private authService:AuthService,private router:Router,private rout:ActivatedRoute) { }
@@ -25,7 +24,6 @@ export class AuthComponent implements OnInit,OnDestroy {
     this.password=this.form.controls['password'].value;
   }
   onSubmit(){
-    console.log(this.form);
     let authObservable:Observable<responseData>
     if(this.signUpMode){
       authObservable=this.authService.signUp(this.form.controls['email'].value,this.form.controls['password'].value)
@@ -33,11 +31,9 @@ export class AuthComponent implements OnInit,OnDestroy {
       authObservable=this.authService.logIn(this.form.controls['email'].value,this.form.controls['password'].value)
     }
     this.authSubs=authObservable.subscribe((reponseData:responseData)=>{
-      console.log(reponseData);
       this.errMsg="";
       this.router.navigate(['/watchList']);
     },errorData=>{
-      console.log(errorData);
       this.errMsg=errorData;
     })
 
@@ -64,11 +60,6 @@ export class AuthComponent implements OnInit,OnDestroy {
     
   }
   private repPasswordValidator(control:FormControl):{[s:string]:boolean}{
-    // console.log('v',control.value,this.password)
-    // console.log(this.signUpMode)
-    // if(!this.signUpMode){
-    //   return null
-    // }
     if(control.value!==this.password && this.signUpMode){
       return {'notSame':true}
     }
