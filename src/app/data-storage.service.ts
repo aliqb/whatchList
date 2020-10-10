@@ -31,18 +31,5 @@ export class DataStorageService {
       })
 
     }
-    // this.authService.user
-    //   .pipe(
-    //     switchMap((user: User) => {
-    //       if (user) {
-    //         return this.http.put("https://watchlist-a8e7c.firebaseio.com/list.json",
-    //           this.listService.getItems(),
-    //           { params: new HttpParams().set('auth', user.token) })
-    //       }
-    //     })
-    //   )
-    //   .subscribe(respone => {
-    //     console.log(respone)
-    //   })
   }
 }
