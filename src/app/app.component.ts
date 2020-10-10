@@ -18,12 +18,12 @@ export class AppComponent implements OnInit,OnDestroy {
   ngOnInit(){
     console.log('f');
     this.authService.autoLogIn();
-    this.listService.itemsChange.subscribe(data=>{
+    this.lsitSubs=this.listService.itemsChange.subscribe(data=>{
       this.dataService.saveItems();
     })
-    this.authService.user.subscribe((user:User)=>{
-      console.log(user)
+    this.authSubs=this.authService.user.subscribe((user:User)=>{
       if(user){
+
         this.dataService.fetchItems(user);
       }
     })

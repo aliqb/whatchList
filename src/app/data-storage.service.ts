@@ -13,6 +13,7 @@ export class DataStorageService {
 
   constructor(private listService: ListService, private http: HttpClient, private authService: AuthService) { }
   fetchItems(user:User) {
+    console.log("fetch",user);
     if(user){
       this.http.get("https://watchlist-a8e7c.firebaseio.com/list.json",
       { params: new HttpParams().set('auth', user.token) })
@@ -22,18 +23,26 @@ export class DataStorageService {
     }
   }
   saveItems() {
-    this.authService.user
-      .pipe(
-        switchMap((user: User) => {
-          if (user) {
-            return this.http.put("https://watchlist-a8e7c.firebaseio.com/list.json",
-              this.listService.getItems(),
-              { params: new HttpParams().set('auth', user.token) })
-          }
-        })
-      )
-      .subscribe(respone => {
-        console.log(respone)
+    const user=this.authService.user.value;
+    if(user){
+      this.http.put("https://watchlist-a8e7c.firebaseio.com/list.json",this.listService.getItems(),{ params: new HttpParams().set('auth', user.token) })
+      .subscribe(response=>{
+        console.log(response)
       })
+
+    }
+    // this.authService.user
+    //   .pipe(
+    //     switchMap((user: User) => {
+    //       if (user) {
+    //         return this.http.put("https://watchlist-a8e7c.firebaseio.com/list.json",
+    //           this.listService.getItems(),
+    //           { params: new HttpParams().set('auth', user.token) })
+    //       }
+    //     })
+    //   )
+    //   .subscribe(respone => {
+    //     console.log(respone)
+    //   })
   }
 }
