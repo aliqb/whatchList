@@ -52,10 +52,6 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
   constructor(private getService: GetMoviesService, private rout: ActivatedRoute, private listService: ListService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    // this.rout.params.subscribe(data => {
-    //   this.getMovie(this.rout.snapshot.params['id']);
-    // })
-    
     this.rout.params.pipe(
       switchMap(data => {
         return this.getService.getMovieById(this.rout.snapshot.params['id']);
@@ -111,33 +107,4 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
       this.addOrRemoveSubs.unsubscribe();
     }
   }
-  // private getMovie(id: string) {
-  //   this.getService.getMovieById(id).subscribe((movieData:MovieData)=>{
-  //     if(movieData.Response==='True'){
-  //       this.movie=new Movie({
-  //         title:movieData.Title,
-  //         year:Number(movieData.Year),
-  //         rated:movieData.Rated,
-  //         runTime:movieData.Runtime,
-  //         genre:movieData.Genre,
-  //         director:movieData.Director,
-  //         writer:movieData.Writer,
-  //         actors:movieData.Actors,
-  //         plot:movieData.Plot,
-  //         language:movieData.Language,
-  //         counry:movieData.Country,
-  //         awards:movieData.Awards,
-  //         poster:movieData.Poster,
-  //         rating:movieData.Ratings.map((rating)=>{
-  //           return {source:rating.Source,value:rating.Value}
-  //         }),
-  //         id:movieData.imdbID,
-  //         type:movieData.Type     
-  //       })
-  //     }else{
-  //       this.message="There is no movie with this id"
-  //     }
-  //   })
-  // }
-
 }
