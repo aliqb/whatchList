@@ -13,6 +13,7 @@ import { RatingComponent } from './movie-detail/rating/rating.component';
 import { WatchListComponent } from './watch-list/watch-list.component';
 import { ListItemComponent } from './watch-list/list-item/list-item.component';
 import { AuthComponent } from './auth/auth.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -27,6 +28,7 @@ import { AuthComponent } from './auth/auth.component';
     WatchListComponent,
     ListItemComponent,
     AuthComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
