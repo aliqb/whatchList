@@ -31,10 +31,7 @@ export class MovieListComponent implements OnInit {
   constructor(private getService: GetMoviesService, private router: Router, private rout: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log('onin');
-    console.log('t',this.title);
     this.rout.queryParams.subscribe(query => {
-      // this.title=this.rout.snapshot.queryParams['title'];
       if(this.rout.snapshot.queryParams['title']){
         // this.title=this.rout.snapshot.queryParams['title'];
       }
@@ -55,16 +52,11 @@ export class MovieListComponent implements OnInit {
     })
   }
   search() {
-    // console.log(this.type);
-    // console.log(this.year)
-    // console.log(this.title);
     let params: {};
     if (this.title) {
-      // console.log('in')
       if (this.type === 'all') {
         params = { title: this.title, page: 1 }
       } else {
-        // console.log('t');
         params = { title: this.title, page: 1, type: this.type };
       }
       if (this.year) {
@@ -75,9 +67,7 @@ export class MovieListComponent implements OnInit {
   }
   private getMovies() {
     const type=this.type === 'all' ? "" : this.type;
-    // console.log('gy',this.year);
     const year=this.year ? this.year : '' ;
-    // console.log('gy',year);
     this.getService.searchByTitle(
       this.rout.snapshot.queryParams['title'], 
       this.currentPage,
