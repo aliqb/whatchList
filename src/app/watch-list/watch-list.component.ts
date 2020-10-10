@@ -1,7 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-
-// import { DataStorageService } from '../data-storage.service';
 import { ListItem } from '../list-item.model';
 import { ListService } from '../list.service';
 
@@ -35,10 +33,6 @@ export class WatchListComponent implements OnInit,OnDestroy {
     if(this.changeSubs){
       this.changeSubs.unsubscribe();
     }
-    // this.dataService.saveItems();
-    // this.storageSubs=this.storageService.saveItems().subscribe(data=>{
-    //   this.storageSubs.unsubscribe();
-    // })
   }
 
 }
