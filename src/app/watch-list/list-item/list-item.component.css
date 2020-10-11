@@ -50,6 +50,15 @@ img:hover{
 /* ul{
     width: 100%;
 } */
+.toggler{
+    background-color: var(--secondry-color);
+    display: inline-block;
+    color: var(--primary-color);
+    transform: translateY(-4px);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
 @media (max-width:364px){
     h3{
         font-size: 1rem;
