@@ -17,22 +17,22 @@
         <!-- icons -->
         <div class="col-3 col-sm-3 col-md-2 col-xl-1">
             <div class="d-sm-flex justify-content-end text-right">
-                <div class="text-right  fa-lg mr-3 my-3">
+                <div class="icon text-right  fa-lg mr-3 my-3">
                     <a (click)="deleteItem()">
                         <i class="fa fa-arrow-up" aria-hidden="true"></i>
                     </a>
                 </div>
-                <div *ngIf="!item.watched" class="text-right text-success fa-lg mr-3 my-3">
+                <div *ngIf="!item.watched" class="icon text-right text-success fa-lg mr-3 my-3">
                     <a (click)="changeWatched()">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </a>
                 </div>
-                <div *ngIf="item.watched" class="text-right text-danger fa-lg mr-3 my-3">
+                <div *ngIf="item.watched" class="icon text-right text-danger fa-lg mr-3 my-3">
                     <a (click)="changeWatched()">
                         <i class="fa fa-eye-slash" aria-hidden="true"></i>
                     </a>
                 </div>
-                <div class="text-right text-danger fa-lg mr-3 my-3">
+                <div class="icon text-right text-danger fa-lg mr-3 my-3">
                     <a (click)="deleteItem()">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
@@ -48,12 +48,12 @@
             <textarea *ngIf="editMode" [(ngModel)]="item.desc" class="form-control"></textarea>
         </div>
         <div class="col-1">
-            <div *ngIf="!editMode" class="text-right text-warning  mr-3 my-3">
+            <div *ngIf="!editMode" class="icon text-right text-warning  mr-3 my-3">
                 <a (click)="editMode=true">
                     <i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>
                 </a>
             </div>
-            <div *ngIf="editMode" class="text-right text-success  mr-3 my-3">
+            <div *ngIf="editMode" class="icon text-right text-success  mr-3 my-3">
                 <a (click)="addDesc()">
                     <i class="fa fa-check-square fa-2x" aria-hidden="true"></i>
                 </a>
