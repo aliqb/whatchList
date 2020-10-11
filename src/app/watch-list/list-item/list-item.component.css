@@ -63,13 +63,20 @@ img:hover{
     transform: translateY(-8px);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    transition: all 0.5s linear;
 }
 .toggler a{
     color: var(--primary-color);
 }
+.toggler i{
+    transition: transform 0.2s linear;
+}
 .toggler a:hover{
     text-decoration: none;
     /* transform: translateY(200px); */
+}
+.toggler a:hover i{
+    transform: rotate(180deg);
 }
 .toggler-watched{
     background-color:  rgb(1, 36, 1) ;
@@ -86,7 +93,6 @@ img:hover{
     overflow: hidden;
     /* display: none; */
     opacity: 0;
-    transition: max-height 0.5s ease;
 }
 .desc-show{
     /* transform: translateY(-0px); */
