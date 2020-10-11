@@ -67,6 +67,10 @@
         </div>
     </div>
     <div class="toggler px-3 py-1">
-        <a class="p-0 m-0" (click)="descShow=!descShow">description</a>
+        <a class="p-0 m-0" (click)="descShow=!descShow">
+            description
+            <i *ngIf="!descShow" class="fa fa-arrow-down" aria-hidden="true"></i>
+            <i *ngIf="descShow" class="fa fa-arrow-up" aria-hidden="true"></i>
+        </a>
     </div>
 </div>
