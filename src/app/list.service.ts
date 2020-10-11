@@ -39,6 +39,18 @@ export class ListService {
     this.itemsChange.next(this.getItems());
     this.addOrDelete.next();
   }
+  goUp(id: string){
+    const index = this.items.findIndex((item: ListItem) => {
+      return item.id === id;
+    });
+    if(index!==0){
+      const upper={...this.items[index-1]};
+      const downer={...this.items[index]};
+      this.items[index]=upper;
+      this.items[index-1]=downer;
+      this.itemsChange.next(this.getItems());
+    }
+  }
   hasItem(id: string) {
     const index = this.items.findIndex((item: ListItem) => {
       return item.id === id;
