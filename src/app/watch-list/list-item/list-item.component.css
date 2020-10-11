@@ -81,7 +81,12 @@ img:hover{
     /* display: flex;
     justify-content: space-between;
     z-index: 4;  */
-    /* transform: translateY(200%); */
+    transform: translateY(-100%);
+    display: none;
+}
+.desc-show{
+    transform: translateY(-0%);
+    display: block;
 }
 /* .item-desc .row{
     position: relative !important;
