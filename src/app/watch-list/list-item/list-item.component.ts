@@ -13,6 +13,7 @@ export class ListItemComponent implements OnInit {
   @Input() item:ListItem;
   @Input() isFirst:boolean
   editMode:boolean=false;
+  descShow:boolean=false;
 
   ngOnInit(): void {
   }

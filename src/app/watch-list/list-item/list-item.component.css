@@ -60,34 +60,21 @@ img:hover{
 .toggler{
     background-color: var(--secondry-color);
     display: inline-block;
-    color: var(--primary-color);
     transform: translateY(-4px);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-
 }
-.item-body{
-    /* position: relative;
-    min-height: 100px; */
-    /* min-height: 200px; */
+.toggler a{
+    color: var(--primary-color);
+}
+.toggler a:hover{
+    text-decoration: none;
+    /* transform: translateY(200px); */
 }
 .item-detail{
     background-color: var(--primary-color);
-    /* position: relative;
-    width: 100%;
-    top: 0;
-    z-index: 2; */
 }
 .item-desc{
-    /* display: none; */
-    /* display: none; */
-    /* position: absolute;
-    top: 100%;
-    width: 0%; */
-    /* z-index: 1; */
-    /* display: flex;
-    justify-content: space-between;
-    z-index: 4;  */
     transform: translateY(-100%);
     display: none;
 }
@@ -96,15 +83,6 @@ img:hover{
     display: block;
     margin-top: -10px;
 }
-/* .item-desc .row{
-    position: relative !important;
-}
-.item-desc .row div{
-    position: relative !important;
-} */
-/* .item-desc div{
-    position: unset;
-} */
 @media (max-width:364px){
     h3{
         font-size: 1rem;
