@@ -44,7 +44,7 @@
             </div>
         </div>
         <!-- desc -->
-        <div class="item-desc to-watch-desc desc-show" [ngClass]="{'watched':item.watched}">
+        <div class="item-desc to-watch-desc" [ngClass]="{'watched':item.watched,'desc-show':descShow}">
             <div class=" row no-gutters align-items-center mb-3 pt-3 pr-3">
                 <div class="col-11 px-3">
                     <h6>decription:</h6>
@@ -67,6 +67,6 @@
         </div>
     </div>
     <div class="toggler px-3 py-1">
-        <a class="p-0 m-0">description</a>
+        <a class="p-0 m-0" (click)="descShow=!descShow">description</a>
     </div>
 </div>
