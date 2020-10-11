@@ -66,8 +66,7 @@
             </div>
         </div>
     </div>
-    <div style="clear: both;" ></div>
-    <div class="toggler px-3 py-1">
+    <div class="toggler px-3 py-1" [ngClass]="{'toggler-watched':item.watched,'toggler-show':descShow}">
         <a class="p-0 m-0" (click)="descShow=!descShow">
             description
             <i *ngIf="!descShow" class="fa fa-arrow-down" aria-hidden="true"></i>

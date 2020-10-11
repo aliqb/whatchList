@@ -71,6 +71,12 @@ img:hover{
     text-decoration: none;
     /* transform: translateY(200px); */
 }
+.toggler-watched{
+    background-color:  rgb(1, 36, 1) ;
+}
+.toggler-show{
+    transform: translateY(-4px);
+}
 .item-detail{
     background-color: var(--primary-color);
 }
