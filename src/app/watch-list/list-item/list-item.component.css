@@ -60,23 +60,23 @@ img:hover{
 
 }
 .item-body{
-    position: relative;
-    min-height: 100px;
+    /* position: relative;
+    min-height: 100px; */
     /* min-height: 200px; */
 }
 .item-detail{
     background-color: var(--primary-color);
-    position: relative;
+    /* position: relative;
     width: 100%;
     top: 0;
-    z-index: 2;
+    z-index: 2; */
 }
 .item-desc{
     /* display: none; */
     /* display: none; */
-    position: absolute;
+    /* position: absolute;
     top: 100%;
-    width: 0%;
+    width: 0%; */
     /* z-index: 1; */
     /* display: flex;
     justify-content: space-between;

@@ -1,8 +1,8 @@
 <div class="main my-5">
-    <div class="item-body to-watch" [ngClass]="{'watched':item.watched}">
+    <div class="item-body">
         <!-- main box -->
-        <div class="item-detail row no-gutters align-items-center to-watch-detail pr-3 pt-0"
-            [ngClass]="{'watched-detail':item.watched}">
+        <div class="item-detail to-watch row no-gutters align-items-center  pr-3 pt-0"
+            [ngClass]="{'watched':item.watched}">
             <div class="col-3 col-sm-3 col-md-1 img-box align-self-start">
                 <div>
                     <a [routerLink]="['/movies',item.id]">
@@ -44,7 +44,7 @@
             </div>
         </div>
         <!-- desc -->
-        <div class="item-desc">
+        <div class="item-desc to-watch" [ngClass]="{'watched':item.watched}">
             <div class=" row no-gutters align-items-center my-3 pr-3">
                 <div class="col-11 px-3">
                     <h6>decription:</h6>
