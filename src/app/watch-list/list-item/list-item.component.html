@@ -14,8 +14,14 @@
                 <h3>{{ item.title }} {{ item.year }}</h3>
             </a>
         </div>
+        <!-- icons -->
         <div class="col-3 col-sm-3 col-md-2 col-xl-1">
             <div class="d-sm-flex justify-content-end text-right">
+                <div class="text-right  fa-lg mr-3 my-3">
+                    <a (click)="deleteItem()">
+                        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                    </a>
+                </div>
                 <div *ngIf="!item.watched" class="text-right text-success fa-lg mr-3 my-3">
                     <a (click)="changeWatched()">
                         <i class="fa fa-eye" aria-hidden="true"></i>
