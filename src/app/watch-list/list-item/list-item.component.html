@@ -1,13 +1,13 @@
 <div class="main my-5">
-    <div class="to-watch" [ngClass]="{'watched':item.watched}">
+    <div class="item-body to-watch" [ngClass]="{'watched':item.watched}">
         <!-- main box -->
-        <div class="row no-gutters align-items-center to-watch-detail pr-3 pt-0"
+        <div class="item-detail row no-gutters align-items-center to-watch-detail pr-3 pt-0"
             [ngClass]="{'watched-detail':item.watched}">
             <div class="col-3 col-sm-3 col-md-1 img-box align-self-start">
                 <div>
                     <a [routerLink]="['/movies',item.id]">
                         <img src="{{ item.poster }}" alt="{{ item.title }} poster" class="img-fluid">
-    
+
                     </a>
                 </div>
             </div>
@@ -39,27 +39,29 @@
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     </div>
-    
+
                 </div>
             </div>
         </div>
         <!-- desc -->
-        <div class="row no-gutters align-items-center my-3 pr-3">
-            <div class="col-11 px-3">
-                <h6>decription:</h6>
-                <p class="desc" *ngIf="item.desc && !editMode">{{ item.desc }}</p>
-                <textarea *ngIf="editMode" [(ngModel)]="item.desc" class="form-control"></textarea>
-            </div>
-            <div class="col-1">
-                <div *ngIf="!editMode" class="icon text-right text-warning  mr-3 my-3">
-                    <a (click)="editMode=true">
-                        <i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>
-                    </a>
+        <div class="item-desc">
+            <div class=" row no-gutters align-items-center my-3 pr-3">
+                <div class="col-11 px-3">
+                    <h6>decription:</h6>
+                    <p class="desc" *ngIf="item.desc && !editMode">{{ item.desc }}</p>
+                    <textarea *ngIf="editMode" [(ngModel)]="item.desc" class="form-control"></textarea>
                 </div>
-                <div *ngIf="editMode" class="icon text-right text-success  mr-3 my-3">
-                    <a (click)="addDesc()">
-                        <i class="fa fa-check-square fa-2x" aria-hidden="true"></i>
-                    </a>
+                <div class="col-1">
+                    <div *ngIf="!editMode" class="icon text-right text-warning  mr-3 my-3">
+                        <a (click)="editMode=true">
+                            <i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div *ngIf="editMode" class="icon text-right text-success  mr-3 my-3">
+                        <a (click)="addDesc()">
+                            <i class="fa fa-check-square fa-2x" aria-hidden="true"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

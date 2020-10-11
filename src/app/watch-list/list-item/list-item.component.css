@@ -59,6 +59,35 @@ img:hover{
     border-bottom-right-radius: 8px;
 
 }
+.item-body{
+    position: absolute;
+}
+.item-detail{
+    background-color: var(--primary-color);
+    position: relative;
+    top: 0;
+    /* z-index: 1; */
+    /* display: none; */
+}
+.item-desc{
+    /* display: none; */
+    /* display: none; */
+    position: relative;
+    top: 0px;
+    /* display: flex;
+    justify-content: space-between;
+    z-index: 4;  */
+    /* transform: translateY(-100%); */
+}
+/* .item-desc .row{
+    position: relative !important;
+}
+.item-desc .row div{
+    position: relative !important;
+} */
+/* .item-desc div{
+    position: unset;
+} */
 @media (max-width:364px){
     h3{
         font-size: 1rem;
