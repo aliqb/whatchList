@@ -20,12 +20,15 @@ export class ListService {
     this.itemsChange.next(this.getItems());
     this.addOrDelete.next();
   }
-  changeWatched(id: string, watched: boolean) {
-    let item = this.items.find((item: ListItem) => {
+  changeWatched(id: string) {
+    let index = this.items.findIndex((item: ListItem) => {
       return item.id === id;
     });
-    console.log("s!",item);
-    item.watched = watched;
+    // console.log("s!",item);
+    const item=this.items[index];
+    item.watched=!item.watched;
+    this.items.splice(index,1);
+    this.items.push(item);
     this.itemsChange.next(this.getItems());
   }
   deleteItem(id: string) {

@@ -16,7 +16,7 @@ export class ListItemComponent implements OnInit {
   ngOnInit(): void {
   }
   changeWatched(){
-    this.listService.changeWatched(this.item.id,!this.item.watched);
+    this.listService.changeWatched(this.item.id);
   }
   deleteItem(){
     this.listService.deleteItem(this.item.id);
