@@ -20,10 +20,11 @@ export class ListService {
     this.itemsChange.next(this.getItems());
     this.addOrDelete.next();
   }
-  changeItem(id: string, watched: boolean, description) {
+  changeWatched(id: string, watched: boolean) {
     let item = this.items.find((item: ListItem) => {
       return item.id === id;
     });
+    console.log("s!",item);
     item.watched = watched;
     this.itemsChange.next(this.getItems());
   }

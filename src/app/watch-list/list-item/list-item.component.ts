@@ -16,14 +16,14 @@ export class ListItemComponent implements OnInit {
   ngOnInit(): void {
   }
   changeWatched(){
-    this.listService.changeItem(this.item.id,!this.item.watched,this.item.desc);
+    this.listService.changeWatched(this.item.id,!this.item.watched);
   }
   deleteItem(){
     this.listService.deleteItem(this.item.id);
   }
   addDesc(){
     this.editMode=false;
-    this.listService.changeItem(this.item.id,this.item.watched,this.item.desc);
+    this.listService.itemsChange.next(this.listService.getItems());
   }
 
 }
