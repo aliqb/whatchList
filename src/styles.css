@@ -2,10 +2,15 @@
     --primary-color:#333;
     --secondry-color:#bbb;
 }
+html{
+    position: relative;
+}
 body{
     background-color:var(--primary-color);
     color:var(--secondry-color);
     font-family: Arial, Helvetica, sans-serif;
+    /* position: relative; */
+    min-height: 100vh;
 }
 a{
     cursor: pointer;

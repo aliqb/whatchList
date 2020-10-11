@@ -13,11 +13,6 @@
             <a class="link" [routerLink]="['/movies',item.id]">
                 <h3>{{ item.title }} {{ item.year }}</h3>
             </a>
-            <!-- <div class="pb-2">
-                <h6>decription:</h6>
-                <p class="desc" *ngIf="item.desc && !editMode">{{ item.desc }}</p>
-                <textarea *ngIf="editMode" [(ngModel)]="item.desc" class="form-control"></textarea>
-            </div> -->
         </div>
         <div class="col-3 col-sm-3 col-md-2 col-xl-1">
             <div class="d-sm-flex justify-content-end text-right">
@@ -31,16 +26,6 @@
                         <i class="fa fa-eye-slash" aria-hidden="true"></i>
                     </a>
                 </div>
-                <!-- <div *ngIf="!editMode" class="text-right text-warning fa-lg mr-3 my-3">
-                    <a (click)="editMode=true">
-                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                    </a>
-                </div>
-                <div *ngIf="editMode" class="text-right text-success fa-lg mr-3 my-3">
-                    <a (click)="addDesc()">
-                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                    </a>
-                </div> -->
                 <div class="text-right text-danger fa-lg mr-3 my-3">
                     <a (click)="deleteItem()">
                         <i class="fa fa-trash" aria-hidden="true"></i>
