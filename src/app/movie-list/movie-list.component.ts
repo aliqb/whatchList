@@ -33,7 +33,7 @@ export class MovieListComponent implements OnInit {
   ngOnInit(): void {
     this.rout.queryParams.subscribe(query => {
       if(this.rout.snapshot.queryParams['title']){
-        // this.title=this.rout.snapshot.queryParams['title'];
+        this.title=this.rout.snapshot.queryParams['title'];
       }
       this.currentPage = +this.rout.snapshot.queryParams['page'];
       this.type=this.rout.snapshot.queryParams['type'];
