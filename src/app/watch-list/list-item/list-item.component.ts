@@ -26,5 +26,8 @@ export class ListItemComponent implements OnInit {
     this.editMode=false;
     this.listService.itemsChange.next(this.listService.getItems());
   }
+  onUpper(){
+    this.listService.goUp(this.item.id);
+  }
 
 }
