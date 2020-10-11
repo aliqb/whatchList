@@ -2,6 +2,13 @@
     border: 4px var(--secondry-color) solid;
     border-radius: 5px;
 }
+.to-watch-desc{
+    border-left: 4px var(--secondry-color) solid;
+    border-right: 4px var(--secondry-color) solid;
+    border-bottom: 4px var(--secondry-color) solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 .to-watch-detail{
     border-bottom: 4px var(--secondry-color) solid;
 }
@@ -85,8 +92,9 @@ img:hover{
     display: none;
 }
 .desc-show{
-    transform: translateY(-0%);
+    transform: translateY(-0px);
     display: block;
+    margin-top: -10px;
 }
 /* .item-desc .row{
     position: relative !important;
