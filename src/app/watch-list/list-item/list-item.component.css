@@ -43,8 +43,6 @@ img:hover{
 }
 .icon:hover{
     transform: scale(1.1);
-    /* color: red !important; */
-
 }
 .desc{
     width: 100%;
@@ -54,9 +52,20 @@ img:hover{
     overflow: auto;
 
 }
-/* ul{
-    width: 100%;
-} */
+.item-detail{
+    background-color: var(--primary-color);
+}
+.item-desc{
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+.desc-show{
+    opacity: 1;
+    max-height: 500px;
+    margin-top: -10px;
+}
+/*toggler*/
 .toggler{
     background-color: var(--secondry-color);
     display: inline-block;
@@ -73,7 +82,6 @@ img:hover{
 }
 .toggler a:hover{
     text-decoration: none;
-    /* transform: translateY(200px); */
 }
 .toggler a:hover i{
     transform: rotate(180deg);
@@ -83,23 +91,6 @@ img:hover{
 }
 .toggler-show{
     transform: translateY(-4px);
-}
-.item-detail{
-    background-color: var(--primary-color);
-}
-.item-desc{
-    /* transform: translateY(-10px); */
-    max-height: 0;
-    overflow: hidden;
-    /* display: none; */
-    opacity: 0;
-}
-.desc-show{
-    /* transform: translateY(-0px); */
-    /* display: block; */
-    opacity: 1;
-    max-height: 500px;
-    margin-top: -10px;
 }
 @media (max-width:364px){
     h3{
