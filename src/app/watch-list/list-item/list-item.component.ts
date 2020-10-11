@@ -11,6 +11,7 @@ export class ListItemComponent implements OnInit {
 
   constructor(private listService:ListService) { }
   @Input() item:ListItem;
+  @Input() isFirst:boolean
   editMode:boolean=false;
 
   ngOnInit(): void {

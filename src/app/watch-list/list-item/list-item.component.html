@@ -17,7 +17,7 @@
         <!-- icons -->
         <div class="col-3 col-sm-3 col-md-2 col-xl-1">
             <div class="d-sm-flex justify-content-end text-right">
-                <div class="icon text-right  fa-lg mr-3 my-3">
+                <div *ngIf="!isFirst" class="icon text-right  fa-lg mr-3 my-3">
                     <a (click)="deleteItem()">
                         <i class="fa fa-arrow-up" aria-hidden="true"></i>
                     </a>
