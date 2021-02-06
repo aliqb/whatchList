@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
@@ -16,11 +17,11 @@ export class MovieComponent implements OnInit, OnDestroy {
   isAuth: boolean = false;
   addOrRemoveSubs: Subscription;
   authSub: Subscription;
-  constructor(private router: Router, private rout: ActivatedRoute, private listService: ListService, private authService: AuthService) { }
+  constructor(private router: Router, private rout: ActivatedRoute, private listService: ListService, private fireAuth:AngularFireAuth) { }
 
   ngOnInit(): void {
     this.added = this.listService.hasItem(this.movie.id);
-    this.authSub = this.authService.user.subscribe(user => {
+    this.authSub = this.fireAuth.authState.subscribe(user => {
       this.isAuth = !!user;
     })
     this.addOrRemoveSubs = this.listService.addOrDelete.subscribe(() => {

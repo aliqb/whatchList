@@ -31,6 +31,8 @@ export class AuthComponent implements OnInit,OnDestroy {
       authObservable=this.authService.logIn(this.form.controls['email'].value,this.form.controls['password'].value)
     }
     this.authSubs=authObservable.subscribe((reponseData:responseData)=>{
+      console.log(reponseData);
+      
       this.errMsg="";
       this.router.navigate(['/watchList']);
     },errorData=>{

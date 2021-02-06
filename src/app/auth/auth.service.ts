@@ -27,47 +27,43 @@ export class AuthService {
     private router:Router,
     private _fireAuth:AngularFireAuth) { }
 
-  signUpOld(email: string, password: string) {
-    return this.http.post<responseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+environment.firebaseApiKey,
-    {
-      email:email,
-      password:password,
-      returnSecureToken:true
-    }
-    ).pipe(catchError(this.handleError),tap(responseData=>{
-      this.handleAuth(responseData.email,responseData.localId,responseData.idToken, +responseData.expiresIn);
-    }))
-  }
+  // signUpOld(email: string, password: string) {
+  //   return this.http.post<responseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+environment.firebaseApiKey,
+  //   {
+  //     email:email,
+  //     password:password,
+  //     returnSecureToken:true
+  //   }
+  //   ).pipe(catchError(this.handleError),tap(responseData=>{
+  //     this.handleAuth(responseData.email,responseData.localId,responseData.idToken, +responseData.expiresIn);
+  //   }))
+  // }
 
   
   signUp(email: string, password: string) {
     const signUpObv:Observable<any>=from(this._fireAuth.createUserWithEmailAndPassword(email,password));
-    signUpObv.pipe(catchError(this.handleError),tap(responseData=>{
-      this.handleAuth(responseData.email,responseData.localId,responseData.idToken, +responseData.expiresIn);
-    }))
+    signUpObv.pipe(catchError(this.handleError))
     return signUpObv;
 
   }
 
-  logInOld(email: string, password: string){
-    return this.http.post<responseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+environment.firebaseApiKey,
-    {
-      email:email,
-      password:password,
-      returnSecureToken:true
-    }
-    ).pipe(catchError(this.handleError),tap(responseData=>{
-      this.handleAuth(responseData.email,responseData.localId,responseData.idToken, +responseData.expiresIn);
-    }))
-  }
+  // logInOld(email: string, password: string){
+  //   return this.http.post<responseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+environment.firebaseApiKey,
+  //   {
+  //     email:email,
+  //     password:password,
+  //     returnSecureToken:true
+  //   }
+  //   ).pipe(catchError(this.handleError),tap(responseData=>{
+  //     this.handleAuth(responseData.email,responseData.localId,responseData.idToken, +responseData.expiresIn);
+  //   }))
+  // }
 
   logIn(email: string, password: string){
     const loginObv:Observable<any>=from(
       this._fireAuth.signInWithEmailAndPassword(email,password)
     )
-    loginObv.pipe(catchError(this.handleError),tap(responseData=>{
-      this.handleAuth(responseData.email,responseData.localId,responseData.idToken, +responseData.expiresIn);
-    }));
+    loginObv.pipe(catchError(this.handleError));
     return loginObv;
   }
 
@@ -109,14 +105,14 @@ export class AuthService {
       this.logout();
     },expireDuration)
   }
-  private handleAuth(email:string,id:string,token:string,expireIn:number){
-    const expireDate=new Date(new Date().getTime() + expireIn*1000);
-    const user=new User(email,id,token,expireDate);
-    this.user.next(user);
-    localStorage.setItem('userData',JSON.stringify(user));
-    this.autoLogOut(expireIn*1000);
+  // private handleAuth(email:string,id:string,token:string,expireIn:number){
+  //   const expireDate=new Date(new Date().getTime() + expireIn*1000);
+  //   const user=new User(email,id,token,expireDate);
+  //   this.user.next(user);
+  //   localStorage.setItem('userData',JSON.stringify(user));
+  //   this.autoLogOut(expireIn*1000);
     
-  }
+  // }
 
   private handleError(err:HttpErrorResponse){
     let errMsg="an unknow error occurd!"
