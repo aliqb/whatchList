@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject, from, Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../User.model';
@@ -22,9 +23,11 @@ export class AuthService {
   user=new BehaviorSubject<User>(null);
   private logOutTimer;
 
-  constructor(private http: HttpClient,private router:Router) { }
+  constructor(private http: HttpClient,
+    private router:Router,
+    private _fireAuth:AngularFireAuth) { }
 
-  signUp(email: string, password: string) {
+  signUpOld(email: string, password: string) {
     return this.http.post<responseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+environment.firebaseApiKey,
     {
       email:email,
@@ -36,7 +39,17 @@ export class AuthService {
     }))
   }
 
-  logIn(email: string, password: string){
+  
+  signUp(email: string, password: string) {
+    const signUpObv:Observable<any>=from(this._fireAuth.createUserWithEmailAndPassword(email,password));
+    signUpObv.pipe(catchError(this.handleError),tap(responseData=>{
+      this.handleAuth(responseData.email,responseData.localId,responseData.idToken, +responseData.expiresIn);
+    }))
+    return signUpObv;
+
+  }
+
+  logInOld(email: string, password: string){
     return this.http.post<responseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+environment.firebaseApiKey,
     {
       email:email,
@@ -46,6 +59,16 @@ export class AuthService {
     ).pipe(catchError(this.handleError),tap(responseData=>{
       this.handleAuth(responseData.email,responseData.localId,responseData.idToken, +responseData.expiresIn);
     }))
+  }
+
+  logIn(email: string, password: string){
+    const loginObv:Observable<any>=from(
+      this._fireAuth.signInWithEmailAndPassword(email,password)
+    )
+    loginObv.pipe(catchError(this.handleError),tap(responseData=>{
+      this.handleAuth(responseData.email,responseData.localId,responseData.idToken, +responseData.expiresIn);
+    }));
+    return loginObv;
   }
 
   logout(){
