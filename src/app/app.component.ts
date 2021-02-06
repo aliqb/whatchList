@@ -28,6 +28,9 @@ export class AppComponent implements OnInit,OnDestroy {
       }
     })
   }
+  test(){
+    this.dataService.saveItems();
+  }
   ngOnDestroy(){
     if(this.lsitSubs){
       this.lsitSubs.unsubscribe();
