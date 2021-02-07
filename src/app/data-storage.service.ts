@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { take } from 'rxjs/operators';
 import { AuthService } from './auth/auth.service';
 import { ListItem } from './list-item.model';
 import { ListService } from './list.service';
@@ -13,7 +14,7 @@ import { User } from './User.model';
 export class DataStorageService {
 
   constructor(private listService: ListService, private http: HttpClient, private authService: AuthService,private fireStore:AngularFirestore,private fireAuth:AngularFireAuth) { }
-  fetchItems(user:User) {
+  fetchItemsOld(user:User) {
     if(user){
       this.http.get("https://watchlist-a8e7c.firebaseio.com/list.json",
       { params: new HttpParams().set('auth', user.token) })
@@ -22,14 +23,24 @@ export class DataStorageService {
       })
     }
   }
-  fetchItemsN(uid:string) {
+  fetchItems(uid:string) {
+    console.log('fe');
+    
     if(uid){
       this.fireStore
       .collection('lists')
       .doc(uid)
-      .collection('userList')
-      .valueChanges()
-      .subscribe
+      // .valueChanges()
+      .snapshotChanges()
+      .pipe(take(1))
+      .subscribe(data=>{
+        // console.log(data.payload.data()['items']);
+        
+        const items:ListItem[]=JSON.parse(data.payload.data()['items']);
+        console.log('fff');
+        
+        this.listService.setItems(items);        
+      })
     }
   }
   saveItemsOld() {
@@ -43,14 +54,13 @@ export class DataStorageService {
     }
   }
   saveItems() {
-    console.log(this.listService.getItems())
+    // console.log(this.listService.getItems())
     // console.log({...this.listService.getItems()})
     // (await this.fireAuth.currentUser).uid;
 
     this.fireAuth.currentUser.then(user=>{
       const items=this.listService.getItems();
       const id=user.uid;
-      const record:ListRecord={id,items}
       this.fireStore
       .collection('lists')
       .doc(user.uid)
@@ -63,9 +73,5 @@ export class DataStorageService {
       // });
     })
   }
-}
-interface ListRecord{
-  id:string,
-  items:ListItem[]
 }
 

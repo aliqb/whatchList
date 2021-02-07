@@ -59,6 +59,8 @@ export class ListService {
   }
   setItems(items: ListItem[]) {
     this.items = items;
+    console.log('ss');
+    
     this.itemsChange.next(this.getItems());
   }
 }
