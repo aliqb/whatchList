@@ -35,11 +35,12 @@ export class DataStorageService {
       .pipe(take(1))
       .subscribe(data=>{
         // console.log(data.payload.data()['items']);
-        
-        const items:ListItem[]=JSON.parse(data.payload.data()['items']);
-        console.log('fff');
-        
-        this.listService.setItems(items);        
+        if(data.payload.data()){
+          const items:ListItem[]=JSON.parse(data.payload.data()['items']);
+          console.log('fff');
+          
+          this.listService.setItems(items);        
+        }
       })
     }
   }

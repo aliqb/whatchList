@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators'
 import { ListService } from '../list.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 interface RatingData {
   Source: string;
   Value: string;
@@ -49,7 +50,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
   isAuth: boolean = false
   addOrRemoveSubs: Subscription;
   authSubs: Subscription;
-  constructor(private getService: GetMoviesService, private rout: ActivatedRoute, private listService: ListService, private authService: AuthService) { }
+  constructor(private getService: GetMoviesService, private rout: ActivatedRoute, private listService: ListService, private authFire:AngularFireAuth) { }
 
   ngOnInit(): void {
     this.rout.params.pipe(
@@ -84,7 +85,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
         this.message = "There is no movie with this id"
       }
     })
-    this.authSubs=this.authService.user.subscribe(user=>{
+    this.authSubs=this.authFire.authState.subscribe(user=>{
       this.isAuth=!!user;
     })
   }
