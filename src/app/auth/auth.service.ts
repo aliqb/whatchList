@@ -68,9 +68,14 @@ export class AuthService {
   }
 
   logout(){
+    this._fireAuth.signOut()
+    .then(data=>{
+      console.log(data);
+      this.router.navigate(['/auth']);
+    })
     // this.user.next(null);
     // if(this.router.url==='/watchList'){
-    //   this.router.navigate(['/auth']);
+      // this.router.navigate(['/auth']);
     // }
     // localStorage.removeItem('userData');
     // if(this.logOutTimer){

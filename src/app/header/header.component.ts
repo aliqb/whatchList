@@ -11,7 +11,7 @@ import { AuthService } from '../auth/auth.service';
 export class HeaderComponent implements OnInit,OnDestroy {
   isAuth:boolean=false;
   authSubs:Subscription
-  constructor(private fireAuth:AngularFireAuth) { }
+  constructor(private fireAuth:AngularFireAuth,private authService:AuthService) { }
 
   ngOnInit(): void {
     this.authSubs=this.fireAuth.authState.subscribe(user=>{
@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit,OnDestroy {
     this.authSubs.unsubscribe();
   }
   onLogOut(){
-    // this.authService.logout();
+    this.authService.logout();
   }
 
 }
