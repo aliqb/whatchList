@@ -22,6 +22,16 @@ export class DataStorageService {
       })
     }
   }
+  fetchItemsN(uid:string) {
+    if(uid){
+      this.fireStore
+      .collection('lists')
+      .doc(uid)
+      .collection('userList')
+      .valueChanges()
+      .subscribe
+    }
+  }
   saveItemsOld() {
     const user=this.authService.user.value;
     if(user){
@@ -44,10 +54,13 @@ export class DataStorageService {
       this.fireStore
       .collection('lists')
       .doc(user.uid)
-      .collection('userList')
-      .add({
-        items: JSON.stringify(items)
-      });
+      .set({
+        items:JSON.stringify(items)
+      })
+      // .collection('userList')
+      // .add({
+      //   items: JSON.stringify(items)
+      // });
     })
   }
 }
