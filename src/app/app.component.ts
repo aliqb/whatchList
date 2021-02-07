@@ -18,7 +18,7 @@ export class AppComponent implements OnInit,OnDestroy {
   constructor(private authService:AuthService,private dataService:DataStorageService,private listService:ListService,private fireAuth:AngularFireAuth){}
   ngOnInit(){
     console.log('f');
-    this.authService.autoLogIn();
+    // this.authService.autoLogIn();
     this.lsitSubs=this.listService.itemsChange.subscribe(data=>{
       console.log('wtf');
       this.dataService.saveItems();
