@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { DataStorageService } from './data-storage.service';
@@ -14,7 +15,7 @@ export class AppComponent implements OnInit,OnDestroy {
   title = 'movies';
   lsitSubs:Subscription;
   authSubs:Subscription
-  constructor(private authService:AuthService,private dataService:DataStorageService,private listService:ListService){}
+  constructor(private authService:AuthService,private dataService:DataStorageService,private listService:ListService,private fireAuth:AngularFireAuth){}
   ngOnInit(){
     console.log('f');
     this.authService.autoLogIn();

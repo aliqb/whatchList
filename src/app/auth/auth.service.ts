@@ -68,42 +68,42 @@ export class AuthService {
   }
 
   logout(){
-    this.user.next(null);
-    if(this.router.url==='/watchList'){
-      this.router.navigate(['/auth']);
-    }
-    localStorage.removeItem('userData');
-    if(this.logOutTimer){
-      clearTimeout(this.logOutTimer);
-    }
-    this.logOutTimer=null;
+    // this.user.next(null);
+    // if(this.router.url==='/watchList'){
+    //   this.router.navigate(['/auth']);
+    // }
+    // localStorage.removeItem('userData');
+    // if(this.logOutTimer){
+    //   clearTimeout(this.logOutTimer);
+    // }
+    // this.logOutTimer=null;
   }
 
   autoLogIn(){
-    const userData: {
-      email: string;
-      id: string;
-      _token: string;
-      _tokenExpirationDate: string;
-    } = JSON.parse(localStorage.getItem('userData'));
-    if(userData){
-      const user=new User(userData.email,userData.id,userData._token,new Date(userData._tokenExpirationDate));
-      if(user.token){
-        console.log('al',user);
-        this.user.next(user);
-        const expireDuration=new Date(userData._tokenExpirationDate).getTime() -new Date().getTime() ;
-        console.log(expireDuration);
-        this.autoLogOut(expireDuration)
-      }
-    }
+    // const userData: {
+    //   email: string;
+    //   id: string;
+    //   _token: string;
+    //   _tokenExpirationDate: string;
+    // } = JSON.parse(localStorage.getItem('userData'));
+    // if(userData){
+    //   const user=new User(userData.email,userData.id,userData._token,new Date(userData._tokenExpirationDate));
+    //   if(user.token){
+    //     console.log('al',user);
+    //     this.user.next(user);
+    //     const expireDuration=new Date(userData._tokenExpirationDate).getTime() -new Date().getTime() ;
+    //     console.log(expireDuration);
+    //     this.autoLogOut(expireDuration)
+    //   }
+    // }
 
   }
   
   private autoLogOut(expireDuration:number){
-    this.logOutTimer=setTimeout(()=>{
-      this.user.next(null);
-      this.logout();
-    },expireDuration)
+    // this.logOutTimer=setTimeout(()=>{
+    //   this.user.next(null);
+    //   this.logout();
+    // },expireDuration)
   }
   // private handleAuth(email:string,id:string,token:string,expireIn:number){
   //   const expireDate=new Date(new Date().getTime() + expireIn*1000);
