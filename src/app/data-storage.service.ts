@@ -1,19 +1,17 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { take } from 'rxjs/operators';
-import { AuthService } from './auth/auth.service';
 import { ListItem } from './list-item.model';
 import { ListService } from './list.service';
-import { User } from './User.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataStorageService {
 
-  constructor(private listService: ListService, private http: HttpClient, private authService: AuthService,private fireStore:AngularFirestore,private fireAuth:AngularFireAuth) { }
+  constructor(private listService: ListService,private fireStore:AngularFirestore,private fireAuth:AngularFireAuth) { }
   // fetchItemsOld(user:User) {
   //   if(user){
   //     this.http.get("https://watchlist-a8e7c.firebaseio.com/list.json",
@@ -24,7 +22,6 @@ export class DataStorageService {
   //   }
   // }
   fetchItems(uid:string) {
-    console.log('fe');
     
     if(uid){
       this.fireStore
@@ -35,16 +32,12 @@ export class DataStorageService {
       .pipe(take(1))
       .subscribe(data=>{
         // console.log(data.payload.data()['items']);
-        console.log('here');        
         if(data.payload.data()){
-          console.log('hereF');        
       
           const items:ListItem[]=JSON.parse(data.payload.data()['items']);
-          console.log('fff');
           
           this.listService.setItems(items);        
         }else{
-          console.log('hereE'); 
           this.listService.setItems([]);       
         }
       })
@@ -70,10 +63,6 @@ export class DataStorageService {
       .set({
         items:JSON.stringify(items)
       })
-      // .collection('userList')
-      // .add({
-      //   items: JSON.stringify(items)
-      // });
     })
   }
 }

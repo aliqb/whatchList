@@ -5,7 +5,6 @@ import { Movie } from '../movie.model';
 import { switchMap } from 'rxjs/operators'
 import { ListService } from '../list.service';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 interface RatingData {
   Source: string;

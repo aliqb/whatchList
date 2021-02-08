@@ -25,7 +25,7 @@ export class WatchListComponent implements OnInit,OnDestroy {
       }
     })
     this.changeSubs=this.listServie.itemsChange.subscribe((items:ListItem[])=>{
-      console.log('l',items);
+      // console.log('l',items);
       this.setArrs(items);
     })
   }

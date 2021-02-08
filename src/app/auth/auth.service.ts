@@ -1,11 +1,9 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {  HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { BehaviorSubject, from, Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { User } from '../User.model';
+import { from, Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 export interface responseData{
   idToken:string,
@@ -23,7 +21,7 @@ export class AuthService {
   // user=new BehaviorSubject<User>(null);
   // private logOutTimer;
 
-  constructor(private http: HttpClient,
+  constructor(
     private router:Router,
     private _fireAuth:AngularFireAuth) { }
 
@@ -70,7 +68,7 @@ export class AuthService {
   logout(){
     this._fireAuth.signOut()
     .then(data=>{
-      console.log(data);
+      // console.log(data);
       this.router.navigate(['/auth']);
     })
     // this.user.next(null);

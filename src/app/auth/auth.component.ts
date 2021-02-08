@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService, responseData } from './auth.service';
 
@@ -15,7 +15,7 @@ export class AuthComponent implements OnInit,OnDestroy {
   errMsg:string="";
   password:string;
   authSubs:Subscription;
-  constructor(private authService:AuthService,private router:Router,private rout:ActivatedRoute) { }
+  constructor(private authService:AuthService,private router:Router) { }
 
   ngOnInit(): void {
     this.makeForm();
@@ -31,7 +31,7 @@ export class AuthComponent implements OnInit,OnDestroy {
       authObservable=this.authService.logIn(this.form.controls['email'].value,this.form.controls['password'].value)
     }
     this.authSubs=authObservable.subscribe((reponseData:responseData)=>{
-      console.log(reponseData);
+      // console.log(reponseData);
       
       this.errMsg="";
       this.router.navigate(['/watchList']);
