@@ -23,12 +23,13 @@ export class AppComponent implements OnInit,OnDestroy {
       console.log('wtf');
       this.dataService.saveItems();
     })
-    this.authSubs=this.fireAuth.authState.subscribe((user)=>{
-      if(user){
-        console.log('authchange');
-        this.dataService.fetchItems(user.uid);
-      }
-    })
+    // this.authSubs=this.fireAuth.authState.subscribe((user)=>{
+    //   if(user){
+    //     console.log('authchange');
+    //     // this.listService.setItems([]);
+    //     this.dataService.fetchItems(user.uid);
+    //   }
+    // })
   }
   test(){
     // this.fireAuth.authState.subscribe(user=>{

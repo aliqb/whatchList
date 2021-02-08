@@ -3,7 +3,7 @@ footer{
     color: var(--secondry-color);
     font-weight: bold;
     position: absolute;
-    bottom: -100;
+    bottom: -100px;
     left: 0;
     width: 100%;
 }

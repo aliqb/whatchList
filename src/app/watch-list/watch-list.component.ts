@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
+import { DataStorageService } from '../data-storage.service';
 import { ListItem } from '../list-item.model';
 import { ListService } from '../list.service';
 
@@ -13,11 +15,17 @@ export class WatchListComponent implements OnInit,OnDestroy {
   wathced:ListItem[]=[];
   changeSubs:Subscription;
   storageSubs:Subscription;
-  constructor(private listServie:ListService) { }
+  constructor(private listServie:ListService,private dataService:DataStorageService,private fireAuth:AngularFireAuth) { }
 
   ngOnInit(): void {
-    this.setArrs(this.listServie.getItems());
+    // this.setArrs(this.listServie.getItems());
+    this.fireAuth.currentUser.then(user=>{
+      if(user){
+        this.dataService.fetchItems(user.uid);
+      }
+    })
     this.changeSubs=this.listServie.itemsChange.subscribe((items:ListItem[])=>{
+      console.log('l',items);
       this.setArrs(items);
     })
   }

@@ -35,11 +35,17 @@ export class DataStorageService {
       .pipe(take(1))
       .subscribe(data=>{
         // console.log(data.payload.data()['items']);
+        console.log('here');        
         if(data.payload.data()){
+          console.log('hereF');        
+      
           const items:ListItem[]=JSON.parse(data.payload.data()['items']);
           console.log('fff');
           
           this.listService.setItems(items);        
+        }else{
+          console.log('hereE'); 
+          this.listService.setItems([]);       
         }
       })
     }
