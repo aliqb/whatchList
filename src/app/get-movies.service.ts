@@ -22,13 +22,13 @@ export class GetMoviesService {
       // console.log(type);
       searchParams = searchParams.append('y',year);
     }
-    return this.http.get("http://www.omdbapi.com/", { params: searchParams })
+    return this.http.get("https://www.omdbapi.com/", { params: searchParams })
   }
   getMovieById(id: string) {
     let searchParams = new HttpParams();
     searchParams = searchParams.append('apiKey', environment.movieApikey);
     searchParams = searchParams.append('i', id);
     searchParams = searchParams.append('plot','full');
-    return this.http.get("http://www.omdbapi.com/", { params: searchParams })
+    return this.http.get("https://www.omdbapi.com/", { params: searchParams })
   }
 }
