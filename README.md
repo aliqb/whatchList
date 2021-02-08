@@ -1,8 +1,9 @@
-# Movies
+# watch list
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
 This project use omdbi api for get movies' data
 This project use firebase as backend
+you can search movies and make watchlist
 see final project [here](https://watchlist-a8e7c.web.app/movies)
 ## Development server
 
