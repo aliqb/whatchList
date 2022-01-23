@@ -14,9 +14,9 @@ export class AppComponent implements OnInit,OnDestroy {
   title = 'movies';
   lsitSubs:Subscription;
   authSubs:Subscription
-  constructor(private dataService:DataStorageService,private listService:ListService,private fireAuth:AngularFireAuth){}
+  constructor(private dataService:DataStorageService,private listService:ListService,private authService: AuthService){}
   ngOnInit(){
-    // this.authService.autoLogIn();
+    this.authService.autoLogIn();
     this.lsitSubs=this.listService.itemsChange.subscribe(data=>{
       this.dataService.saveItems();
     })

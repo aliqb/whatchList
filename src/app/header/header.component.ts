@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
@@ -11,10 +10,10 @@ import { AuthService } from '../auth/auth.service';
 export class HeaderComponent implements OnInit,OnDestroy {
   isAuth:boolean=false;
   authSubs:Subscription
-  constructor(private fireAuth:AngularFireAuth,private authService:AuthService) { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.authSubs=this.fireAuth.authState.subscribe(user=>{
+    this.authSubs=this.authService.user.subscribe(user=>{
       this.isAuth=!!user;
     })
   }

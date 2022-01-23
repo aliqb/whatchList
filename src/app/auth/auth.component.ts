@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService, responseData } from './auth.service';
+import { AuthResponse } from './models/auth.models';
 
 @Component({
   selector: 'app-auth',
@@ -24,13 +25,13 @@ export class AuthComponent implements OnInit,OnDestroy {
     this.password=this.form.controls['password'].value;
   }
   onSubmit(){
-    let authObservable:Observable<responseData>
+    let authObservable:Observable<AuthResponse>
     if(this.signUpMode){
-      authObservable=this.authService.signUp(this.form.controls['email'].value,this.form.controls['password'].value)
+      authObservable=this.authService.signUp(this.form.controls['username'].value,this.form.controls['email'].value,this.form.controls['password'].value)
     }else{
       authObservable=this.authService.logIn(this.form.controls['email'].value,this.form.controls['password'].value)
     }
-    this.authSubs=authObservable.subscribe((reponseData:responseData)=>{
+    this.authSubs=authObservable.subscribe((reponseData:AuthResponse)=>{
       // console.log(reponseData);
       
       this.errMsg="";
@@ -44,6 +45,7 @@ export class AuthComponent implements OnInit,OnDestroy {
     if(this.signUpMode){
       this.form=new FormGroup({
         'email':new FormControl('',[Validators.required,Validators.email]),
+        'username': new FormControl('',[Validators.required]),
         'password':new FormControl('',[Validators.required,Validators.minLength(6)]),
         'passwordRepeat':new FormControl('',[this.repPasswordValidator.bind(this)])
   
